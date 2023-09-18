@@ -11,7 +11,7 @@ const WelcomePage = () => {
             </div>
             <div>
                 <h3>If you are an employer and want to sign up</h3>
-                <Link to={"/register"}>Create an account</Link>
+                <Link to={"/aboutUs"}>Create an account</Link>
             </div>
         </>
     )
