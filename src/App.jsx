@@ -3,6 +3,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { UserContext } from "./context/userContext";
 import { useContext } from "react";
+import Navbar from "./components/Navbar";
+
 
 const App = () => {
   const { users } = useContext(UserContext);
@@ -12,14 +14,7 @@ const App = () => {
   return (
     <>
       <>
-        <ul>
-          <li>
-            <Link to={"/"}>Home</Link>
-          </li>
-          <li>
-            <Link to={"/register"}>register</Link>
-          </li>
-        </ul>
+      <Navbar />
       </>
       <Routes>
         <Route path="/" element={<Login />}></Route>
