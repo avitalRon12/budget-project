@@ -6,6 +6,7 @@ import { useContext } from "react";
 
 import Navbar from "./components/Navbar";
 import WelcomePage from "./pages/WelcomePage";
+import AboutUs from "./pages/AboutUs";
 import Payment from "./components/Payment";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/" element={<WelcomePage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/aboutUs" element={<AboutUs />}></Route>
       </Routes>
       {users.map((user) => (
         <p key={user.username}>{user.username}</p>
