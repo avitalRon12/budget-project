@@ -6,8 +6,7 @@ import { useContext } from "react";
 
 import Navbar from "./components/Navbar";
 import WelcomePage from "./pages/WelcomePage";
-import AboutUs from "./pages/AboutUs";
-import Payment from "./components/Payment";
+
 
 const App = () => {
   const { users } = useContext(UserConange);
