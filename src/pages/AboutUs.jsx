@@ -63,7 +63,7 @@ const AboutUs = () => {
                 Start your journey to financial empowerment with WiseWallet Pro today!</p>
 
             <h2>So are you ready to begin?</h2>
-            <h2><Link to={"/register"}>lets go</Link></h2>
+            <h2><Link to={"/register"}>Let's begin!</Link></h2>
         </>
     )
 }

@@ -6,12 +6,12 @@ const WelcomePage = () => {
         <>
             <h1>Welcome!</h1>
             <div>
-                <h3>If your employer had given you an account</h3>
+                <h3>Already have an account?</h3>
                 <Link to={"/login"}>Log In</Link>
             </div>
             <div>
-                <h3>If you are an employer and want to sign up</h3>
-                <Link to={"/aboutUs"}>Create an account</Link>
+                <h3>Want to work with us?</h3>
+                <Link to={"/aboutUs"}>Make some money</Link>
             </div>
         </>
     )
