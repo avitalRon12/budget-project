@@ -5,6 +5,9 @@ export const UserContext = createContext({
   setUsers: () => {},
   createNewUser: () => {},
   login: () => {},
+  loggedInUser: null,
+  setLoggedInUser: () => {},
+  addPaymentToUser: () => {}
 });
 
 // eslint-disable-next-line react/prop-types
@@ -13,14 +16,20 @@ const UserProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("users")) || []
   );
 
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
   const createNewUser = (newUser) => {
+    let userCreated = true;
     setUsers((prev) => {
       if (prev.some((user) => user.username === newUser.username)) {
+        alert("Username already exists! Please choose a different one.");
+        userCreated = false;
         return prev;
       }
       localStorage.setItem("users", JSON.stringify([...prev, newUser]));
       return [...prev, newUser];
     });
+    return userCreated;
   };
 
   const login = ({ username, password }) => {
@@ -32,11 +41,27 @@ const UserProvider = ({ children }) => {
     if (!passwordMatch) {
       return alert("Wrong credentials!");
     }
+    setLoggedInUser(userExists);
     return alert("Logged in!");
   };
 
+  const addPaymentToUser = (username, paymentInfo) => {
+    setUsers(prevUsers => {
+      const newUsers = prevUsers.map(user => {
+        if (user.username === username) {
+          return {
+            ...user,
+            paymentInfo
+          };
+        }
+        return user;
+      });
+      localStorage.setItem("users", JSON.stringify(newUsers));
+      return newUsers;
+    });
+  };
   return (
-    <UserContext.Provider value={{ users, setUsers, createNewUser, login }}>
+    <UserContext.Provider value={{ users, setUsers, createNewUser, login,addPaymentToUser,loggedInUser, setLoggedInUser }}>
       {children}
     </UserContext.Provider>
   );

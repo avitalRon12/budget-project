@@ -4,7 +4,13 @@ import { UserContext } from "../context/userContext";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  const { login } = useContext(UserContext);
+  const { login,loggedInUser } = useContext(UserContext);
+  
+  if (loggedInUser) {
+    console.log(`The currently logged-in user is ${loggedInUser.username}`);
+  } else {
+    console.log("No user is currently logged in.");
+  }
 
   return (
     <form onSubmit={handleSubmit(login)}>
