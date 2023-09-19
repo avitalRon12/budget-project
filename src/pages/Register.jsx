@@ -12,7 +12,7 @@ const Register = () => {
 
   const onSubmit = () => {
     createNewUser
-    navigate('/adminDash')
+    navigate('/admin/adminDash')
   }
 
   return (

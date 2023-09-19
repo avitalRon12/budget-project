@@ -3,10 +3,13 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { UserContext } from "./context/userContext";
 import { useContext } from "react";
-import Navbar from "./components/Navbar";
 import WelcomePage from "./pages/WelcomePage";
 import AboutUs from "./pages/AboutUs";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminRequests from "./pages/AdminRequests";
+import AdminUsers from "./pages/AdminUsers"
+import AdminCalendar from "./pages/AdminCalendar"
+import AdminLayout from "./components/AdminLayout";
 
 
 const App = () => {
@@ -19,7 +22,12 @@ const App = () => {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/aboutUs" element={<AboutUs />}></Route>
-        <Route path="/adminDash" element={<AdminDashboard/>}></Route>
+        <Route path="/admin" element={<AdminLayout/>}>
+          <Route path="adminDash" element={<AdminDashboard />}></Route>
+          <Route path="adminRequests" element={<AdminRequests />}></Route>
+          <Route path="adminUsers" element={<AdminUsers />}></Route>
+          <Route path="adminCalendar" element={<AdminCalendar />}></Route>
+        </Route>
       </Routes>
     </>
   );
