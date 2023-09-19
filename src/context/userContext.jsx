@@ -10,21 +10,26 @@ export const UserContext = createContext({
   addPaymentToUser: () => {}
 });
 
-const [loggedInUser, setLoggedInUser] = useState(null);
 // eslint-disable-next-line react/prop-types
 const UserProvider = ({ children }) => {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || []
   );
 
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
   const createNewUser = (newUser) => {
+    let userCreated = true;
     setUsers((prev) => {
       if (prev.some((user) => user.username === newUser.username)) {
+        alert("Username already exists! Please choose a different one.");
+        userCreated = false;
         return prev;
       }
       localStorage.setItem("users", JSON.stringify([...prev, newUser]));
       return [...prev, newUser];
     });
+    return userCreated;
   };
 
   const login = ({ username, password }) => {

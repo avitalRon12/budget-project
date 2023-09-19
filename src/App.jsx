@@ -6,21 +6,22 @@ import { useContext } from "react";
 
 import Navbar from "./components/Navbar";
 import WelcomePage from "./pages/WelcomePage";
-
+// import Payment from "./components/Payment";
+import AboutUs from "./pages/AboutUs";
 
 const App = () => {
-  const { users } = useContext(UserConange);
+  const { users } = useContext(UserContext);
 
   return (
     <>
       <Navbar></Navbar>
-      <Payment></Payment>
       <Routes>
         <Route path="/" element={<WelcomePage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/aboutUs" element={<AboutUs />}></Route>
       </Routes>
+
       {users.map((user) => (
         <p key={user.username}>{user.username}</p>
       ))}
