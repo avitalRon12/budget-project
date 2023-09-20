@@ -1,15 +1,17 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../context/userContext";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const { login,loggedInUser } = useContext(UserContext);
-  
+  const navigate=useNavigate();
+
   if (loggedInUser) {
-    console.log(`The currently logged-in user is ${loggedInUser.username}`);
+    navigate('/admin');
   } else {
-    console.log("No user is currently logged in.");
+
   }
 
   return (

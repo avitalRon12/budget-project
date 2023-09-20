@@ -12,13 +12,14 @@ import AdminRequests from "./pages/AdminRequests";
 import AdminUsers from "./pages/AdminUsers"
 import AdminCalendar from "./pages/AdminCalendar"
 import AdminLayout from "./components/AdminLayout";
-
+import PurchaseForm from "./components/PurchaseForm";
 
 const App = () => {
   const { users } = useContext(UserContext);
 
   return (
     <>
+    <PurchaseForm></PurchaseForm>
       <Routes>
         <Route path="/" element={<WelcomePage />}></Route>
         <Route path="/login" element={<Login />}></Route>

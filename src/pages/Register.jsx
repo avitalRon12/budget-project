@@ -5,18 +5,32 @@ import { useNavigate } from "react-router-dom";
 import PaymentModal from "../components/PaymentModal";
 
 const Register = () => {
-  const { register, handleSubmit, formState: { errors }, watch } = useForm();
-  const [passwordInputType, setPasswordInputType] = useState("password");
-  const [confirmPasswordInputType, setConfirmPasswordInputType] = useState("password");
-  const navigate = useNavigate()
-  const { createNewUser  } = useContext(UserContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm();
+  const [isPaymentComplete, setIsPaymentComplete] = useState(false);
+  const navigate = useNavigate();
+  const { createNewUser, addPaymentToUser } = useContext(UserContext);
+  const [paymentData, setPaymentData] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = (data) => {
-    const success = createNewUser(data);
-    if (!success) {
+    if (!isPaymentComplete) {
+      alert("Please fill out payment fields");
       return;
     }
-    navigate("/login");
+    const success = createNewUser(data);
+    if (success) {
+      addPaymentToUser(data.username, paymentData); // Store the payment details for the user
+      navigate("/login");
+    }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -46,44 +60,48 @@ const Register = () => {
           </div>
           <div>
             <input
-              type={passwordInputType}
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               id="password"
               {...register("password", {
                 required: "This field is required",
                 pattern: {
                   value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/,
-                  message: "Password must contain one number, one uppercase letter and one lowercase letter"
-                }
+                  message:
+                    "Password must contain one number, one uppercase letter and one lowercase letter",
+                },
               })}
             />
-            {errors.password && <span>{errors.password.message}</span>}
-            <button type="button" onClick={() => setPasswordInputType(passwordInputType === "password" ? "text" : "password")}>
-              Toggle
+            <button type="button" onClick={togglePasswordVisibility}>
+              {showPassword ? "Hide Password" : "Show Password"}
             </button>
+            {errors.password && <span>{errors.password.message}</span>}
           </div>
           <div>
             <input
-              type={confirmPasswordInputType}
+              type={showPassword ? "text" : "password"}
               placeholder="Confirm Password"
               id="confirmPassword"
               {...register("confirmPassword", {
                 required: "This field is required",
-                validate: (value) => value === watch("password") || "Passwords do not match"
-              })
-              }
+                validate: (value) =>
+                  value === watch("password") || "Passwords do not match",
+              })}
             />
-            {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
-            <button type="button" onClick={() => setConfirmPasswordInputType(confirmPasswordInputType === "password" ? "text" : "password")}>
-              Toggle
+            <button type="button" onClick={togglePasswordVisibility}>
+              {showPassword ? "Hide Password" : "Show Password"}
             </button>
+            {errors.confirmPassword && (
+              <span>{errors.confirmPassword.message}</span>
+            )}
           </div>
-          <div>
-            <button type="submit">Submit</button>
-          </div>
+          <PaymentModal
+            setIsPaymentComplete={setIsPaymentComplete}
+            setPaymentData={setPaymentData}
+          />
+          <button type="submit">Submit</button>
         </form>
       </div>
-      <PaymentModal />
     </>
   );
 };

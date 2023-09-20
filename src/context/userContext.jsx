@@ -18,9 +18,23 @@ const UserProvider = ({ children }) => {
 
   const [loggedInUser, setLoggedInUser] = useState(null);
 
-  const createNewUser = (newUser) => {
+  const createNewUser = (newUser, parentUsername = null) => {
     let userCreated = true;
     setUsers((prev) => {
+      // Check if we're adding a worker to an existing user
+      if (parentUsername) {
+        const updatedUsers = prev.map(user => {
+          if (user.username === parentUsername) {
+            const workers = user.workers || [];
+            workers.push(newUser);
+            return { ...user, workers };
+          }
+          return user;
+        });
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        return updatedUsers;
+      }
+
       if (prev.some((user) => user.username === newUser.username)) {
         alert("Username already exists! Please choose a different one.");
         userCreated = false;
@@ -31,6 +45,7 @@ const UserProvider = ({ children }) => {
     });
     return userCreated;
   };
+
 
   const login = ({ username, password }) => {
     const userExists = users.find((user) => user.username === username);
