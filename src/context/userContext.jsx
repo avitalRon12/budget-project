@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext({
   users: [],
-  setUsers: () => {},
-  createNewUser: () => {},
-  login: () => {},
+  setUsers: () => { },
+  createNewUser: () => { },
+  login: () => { },
   loggedInUser: null,
-  setLoggedInUser: () => {},
-  addPaymentToUser: () => {},
+  setLoggedInUser: () => { },
+  addPaymentToUser: () => { },
 });
 
 // eslint-disable-next-line react/prop-types
@@ -17,9 +17,9 @@ const UserProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("users")) || []
   );
 
-const [loggedInUser, setLoggedInUser] = useState(
-  JSON.parse(localStorage.getItem('loggedInUser')) || null
-);
+  const [loggedInUser, setLoggedInUser] = useState(
+    JSON.parse(localStorage.getItem('loggedInUser')) || null
+  );
 
   const createNewUser = (newUser, parentUsername = null) => {
     let userCreated = true;
@@ -30,7 +30,16 @@ const [loggedInUser, setLoggedInUser] = useState(
           if (user.username === parentUsername) {
             const workers = user.workers || [];
             workers.push(newUser);
-            return { ...user, workers };
+            const updatedUser = { ...user, workers };
+
+            // If the updated user is the currently logged in user,
+            // update loggedInUser in state and local storage
+            if (loggedInUser && loggedInUser.username === user.username) {
+              setLoggedInUser(updatedUser);
+              localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+            }
+
+            return updatedUser;
           }
           return user;
         });
@@ -49,6 +58,7 @@ const [loggedInUser, setLoggedInUser] = useState(
     return userCreated;
   };
 
+
   const login = ({ username, password }) => {
     const userExists = users.find((user) => user.username === username);
     if (!userExists) {
@@ -60,16 +70,16 @@ const [loggedInUser, setLoggedInUser] = useState(
     }
     setLoggedInUser(userExists);
     localStorage.setItem("loggedInUser", JSON.stringify(userExists));
-    return ;
+    return;
   };
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const logout = () => {
     setLoggedInUser(null);
     localStorage.removeItem("loggedInUser");
     navigate('/login');
-  }; 
+  };
 
   const addPaymentToUser = (username, paymentInfo) => {
     setUsers((prevUsers) => {
