@@ -22,23 +22,19 @@ const UserProvider = ({ children }) => {
   );
 
   const createNewUser = (newUser, parentUsername = null) => {
+    console.log(newUser);
     let userCreated = true;
     setUsers((prev) => {
-      // Check if we're adding a worker to an existing user
       if (parentUsername) {
         const updatedUsers = prev.map((user) => {
           if (user.username === parentUsername) {
             const workers = user.workers || [];
             workers.push(newUser);
             const updatedUser = { ...user, workers };
-
-            // If the updated user is the currently logged in user,
-            // update loggedInUser in state and local storage
             if (loggedInUser && loggedInUser.username === user.username) {
               setLoggedInUser(updatedUser);
               localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
             }
-
             return updatedUser;
           }
           return user;
@@ -57,7 +53,6 @@ const UserProvider = ({ children }) => {
     });
     return userCreated;
   };
-
 
   const login = ({ username, password }) => {
     const userExists = users.find((user) => user.username === username);
@@ -78,7 +73,7 @@ const UserProvider = ({ children }) => {
   const logout = () => {
     setLoggedInUser(null);
     localStorage.removeItem("loggedInUser");
-    navigate('/login');
+    navigate('/');
   };
 
   const addPaymentToUser = (username, paymentInfo) => {

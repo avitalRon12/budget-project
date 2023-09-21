@@ -22,9 +22,9 @@ const Register = () => {
       alert("Please fill out payment fields");
       return;
     }
-    const success = createNewUser(data);
+    const success = createNewUser({...data, purchases:[]});
     if (success) {
-      addPaymentToUser(data.username, paymentData); // Store the payment details for the user
+      addPaymentToUser(data.username, paymentData);
       navigate("/login");
     }
   };
