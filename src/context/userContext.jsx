@@ -65,11 +65,7 @@ const UserProvider = ({ children }) => {
               setLoggedInUser(updatedUser);
               localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
             }
-            return updatedUser;
-            const updatedUser = { ...user, workers };
-
-            // If the updated user is the currently logged in user,
-            // update loggedInUser in state and local storage
+           
             if (loggedInUser && loggedInUser.username === user.username) {
               setLoggedInUser(updatedUser);
               localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
