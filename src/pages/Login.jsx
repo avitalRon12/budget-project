@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router";
@@ -8,11 +8,11 @@ const Login = () => {
   const { login,loggedInUser } = useContext(UserContext);
   const navigate=useNavigate();
 
-  if (loggedInUser) {
-    navigate('/admin');
-  } else {
-
-  }
+  useEffect(() => {
+    if (loggedInUser) {
+      navigate("/admin");
+    }
+  }, [loggedInUser, navigate]);
 
   return (
     <form onSubmit={handleSubmit(login)}>
