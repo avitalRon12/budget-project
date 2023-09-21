@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext({
   users: [],
@@ -7,7 +8,7 @@ export const UserContext = createContext({
   login: () => {},
   loggedInUser: null,
   setLoggedInUser: () => {},
-  addPaymentToUser: () => {}
+  addPaymentToUser: () => {},
 });
 
 // eslint-disable-next-line react/prop-types
@@ -16,14 +17,16 @@ const UserProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("users")) || []
   );
 
-  const [loggedInUser, setLoggedInUser] = useState(null);
+const [loggedInUser, setLoggedInUser] = useState(
+  JSON.parse(localStorage.getItem('loggedInUser')) || null
+);
 
   const createNewUser = (newUser, parentUsername = null) => {
     let userCreated = true;
     setUsers((prev) => {
       // Check if we're adding a worker to an existing user
       if (parentUsername) {
-        const updatedUsers = prev.map(user => {
+        const updatedUsers = prev.map((user) => {
           if (user.username === parentUsername) {
             const workers = user.workers || [];
             workers.push(newUser);
@@ -46,7 +49,6 @@ const UserProvider = ({ children }) => {
     return userCreated;
   };
 
-
   const login = ({ username, password }) => {
     const userExists = users.find((user) => user.username === username);
     if (!userExists) {
@@ -57,16 +59,25 @@ const UserProvider = ({ children }) => {
       return alert("Wrong credentials!");
     }
     setLoggedInUser(userExists);
-    return alert("Logged in!");
+    localStorage.setItem("loggedInUser", JSON.stringify(userExists));
+    return ;
   };
 
+  const navigate=useNavigate();
+
+  const logout = () => {
+    setLoggedInUser(null);
+    localStorage.removeItem("loggedInUser");
+    navigate('/login');
+  }; 
+
   const addPaymentToUser = (username, paymentInfo) => {
-    setUsers(prevUsers => {
-      const newUsers = prevUsers.map(user => {
+    setUsers((prevUsers) => {
+      const newUsers = prevUsers.map((user) => {
         if (user.username === username) {
           return {
             ...user,
-            paymentInfo
+            paymentInfo,
           };
         }
         return user;
@@ -76,7 +87,18 @@ const UserProvider = ({ children }) => {
     });
   };
   return (
-    <UserContext.Provider value={{ users, setUsers, createNewUser, login,addPaymentToUser,loggedInUser, setLoggedInUser }}>
+    <UserContext.Provider
+      value={{
+        users,
+        setUsers,
+        createNewUser,
+        login,
+        logout,
+        addPaymentToUser,
+        loggedInUser,
+        setLoggedInUser,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
