@@ -32,13 +32,13 @@ const PurchaseForm = () => {
       </div>
 
       <div>
-        <label htmlFor="totalPrice">Total Price:</label>
+        <label htmlFor="unitPrice">Unit Price:</label>
         <input
           type="number"
-          id="totalPrice"
-          {...register('totalPrice', { required: 'Total price is required' })}
+          id="unitPrice"
+          {...register('unitPrice', { required: 'unit price is required' })}
         />
-        {errors.totalPrice && <p>{errors.totalPrice.message}</p>}
+        {errors.unitPrice && <p>{errors.unitPrice.message}</p>}
       </div>
 
       <div>

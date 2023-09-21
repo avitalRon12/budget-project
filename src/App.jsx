@@ -12,14 +12,13 @@ import AdminRequests from "./pages/AdminRequests";
 import AdminUsers from "./pages/AdminUsers"
 import AdminCalendar from "./pages/AdminCalendar"
 import AdminLayout from "./components/AdminLayout";
-import PurchaseForm from "./components/PurchaseForm";
+import AdminPurchase from "./pages/AdminPurchase";
 
 const App = () => {
   const { users } = useContext(UserContext);
 
   return (
     <>
-    <PurchaseForm></PurchaseForm>
       <Routes>
         <Route path="/" element={<WelcomePage />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -30,6 +29,7 @@ const App = () => {
           <Route path="adminRequests" element={<AdminRequests />}></Route>
           <Route path="adminUsers" element={<AdminUsers />}></Route>
           <Route path="adminCalendar" element={<AdminCalendar />}></Route>
+          <Route path="adminPurchase" element={<AdminPurchase />}></Route>
         </Route>
       </Routes>
     </>

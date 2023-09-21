@@ -20,6 +20,9 @@ const AdminNavbar = () => {
                 <li>
                     <Link to={'/admin/adminUsers'}>Users Management</Link>
                 </li>
+                <li>
+                    <Link to={'/admin/adminPurchase'}>Add new purchase</Link>
+                </li>
             </ul>
         </>
     )
