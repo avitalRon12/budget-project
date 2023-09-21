@@ -1,32 +1,10 @@
-import React, { useEffect, useState }, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
 
 const PurchaseForm = () => {
   const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
-  const { register, handleSubmit, setValue, setValue, formState: { errors } } = useForm();
-
-  const [purchaseName, setPurchaseName] = useState('');
-  const [unitPrice, setUnitPrice] = useState(0);
-  const [purchaseAmount, setPurchaseAmount] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [category, setCategory] = useState('');
-
-  useEffect(() => {
-    register('unitPrice', { required: 'Price is required' });
-    register('purchaseAmount', { required: 'Amount is required' });
-  }, [register]);
-
-
-  useEffect(() => {
-    console.log('unitPrice:', unitPrice);
-    console.log('purchaseAmount:', purchaseAmount);
-
-    const newTotal = unitPrice * purchaseAmount;
-    setTotal(newTotal);
-
-    console.log('newTotal:', newTotal);
-  }, [unitPrice, purchaseAmount]);
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   const [currentUser, setCurrentUser] = useState('')
   const [purchaseName, setPurchaseName] = useState('');
@@ -76,7 +54,6 @@ const PurchaseForm = () => {
           <input
             type="text"
             id="purchaseName"
-            onChange={e => setPurchaseName(e.target.value)}
             onChange={e => setPurchaseName(e.target.value)}
           {...register('purchaseName', { required: 'Purchase name is required' })}
           />
