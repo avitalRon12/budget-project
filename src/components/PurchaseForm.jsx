@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { UserContext } from '../context/userContext';
 
 const PurchaseForm = () => {
+  const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
+  const [currentUser, setCurrentUser] = useState('')
   const [purchaseName, setPurchaseName] = useState('');
   const [unitPrice, setUnitPrice] = useState(0);
   const [purchaseAmount, setPurchaseAmount] = useState(0);
@@ -31,13 +34,14 @@ const PurchaseForm = () => {
       total: total,
       datePurchased: data.datePurchased
     };
-
-    const existingPurchases = JSON.parse(localStorage.getItem('purchases')) || [];
-
-    const updatedPurchases = [...existingPurchases, purchase];
-
-    localStorage.setItem('purchases', JSON.stringify(updatedPurchases));
+    const currentUserIndex = users.findIndex((user) => user.username === loggedInUser.username)
+    if (currentUserIndex !== -1) {
+      const newUsers = [...users];
+      newUsers[currentUserIndex].purchases.push(purchase);
+      setUsers(newUsers)
+    };
   };
+  console.log(users);
 
   return (
     <>
