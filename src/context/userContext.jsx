@@ -115,12 +115,11 @@ const UserProvider = ({ children }) => {
       }
       return alert("Wrong credentials!");
     }
-    setLoggedInUser(userExists);
-    localStorage.setItem("loggedInUser", JSON.stringify(userExists));
-    return ;
+    // setLoggedInUser(userExists);
+    // localStorage.setItem("loggedInUser", JSON.stringify(userExists));
+    // return ;
   };
 
-  const navigate = useNavigate();
   const navigate = useNavigate();
 
   const logout = () => {
