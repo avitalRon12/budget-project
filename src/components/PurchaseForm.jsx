@@ -1,10 +1,32 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState }, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
 
 const PurchaseForm = () => {
   const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const { register, handleSubmit, setValue, setValue, formState: { errors } } = useForm();
+
+  const [purchaseName, setPurchaseName] = useState('');
+  const [unitPrice, setUnitPrice] = useState(0);
+  const [purchaseAmount, setPurchaseAmount] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [category, setCategory] = useState('');
+
+  useEffect(() => {
+    register('unitPrice', { required: 'Price is required' });
+    register('purchaseAmount', { required: 'Amount is required' });
+  }, [register]);
+
+
+  useEffect(() => {
+    console.log('unitPrice:', unitPrice);
+    console.log('purchaseAmount:', purchaseAmount);
+
+    const newTotal = unitPrice * purchaseAmount;
+    setTotal(newTotal);
+
+    console.log('newTotal:', newTotal);
+  }, [unitPrice, purchaseAmount]);
 
   const [currentUser, setCurrentUser] = useState('')
   const [purchaseName, setPurchaseName] = useState('');
@@ -55,7 +77,8 @@ const PurchaseForm = () => {
             type="text"
             id="purchaseName"
             onChange={e => setPurchaseName(e.target.value)}
-            {...register('purchaseName', { required: 'Purchase name is required' })}
+            onChange={e => setPurchaseName(e.target.value)}
+          {...register('purchaseName', { required: 'Purchase name is required' })}
           />
           {errors.purchaseName && <p>{errors.purchaseName.message}</p>}
         </div>
@@ -73,6 +96,21 @@ const PurchaseForm = () => {
           />
           {errors.unitPrice && <p>{errors.unitPrice.message}</p>}
         </div>
+
+      <div>
+        <label htmlFor="unitPrice">Unit Price(in ₪):</label>
+        <input
+          type="number"
+          id="unitPrice"
+          onChange={e => {
+            const value = Number(e.target.value);
+            setUnitPrice(value);
+            setValue('unitPrice', value);
+          }}
+        />
+
+        {errors.unitPrice && <p>{errors.unitPrice.message}</p>}
+      </div>
 
         <div>
           <label htmlFor="purchaseAmount">Purchase Amount:</label>

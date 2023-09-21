@@ -1,18 +1,21 @@
-import React from 'react'
-import AdminNavbar from '../components/AdminNavbar'
-import Footer from '../components/Footer'
-import { Outlet } from 'react-router-dom'
-
+import React, { useContext } from "react";
+import AdminNavbar from "../components/AdminNavbar";
+import Footer from "../components/Footer";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/userContext";
 
 const AdminLayout = () => {
+  const { loggedInUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
-    return (
-        <>
-            <AdminNavbar />
-            <Outlet />
-            <Footer />
-        </>
-    )
-}
+  if (loggedInUser==null) navigate("/error");
+  return (
+    <>
+      <AdminNavbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
 
-export default AdminLayout
+export default AdminLayout;

@@ -1,23 +1,34 @@
-import React, { useContext } from 'react';
-import { useForm } from 'react-hook-form';
-import { UserContext } from '../context/userContext'; // Update the path accordingly
+import React, { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import { UserContext } from "../context/userContext"; // Update the path accordingly
 
 const AdminUsers = () => {
   const { createNewUser, loggedInUser } = useContext(UserContext);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (workerData) => {
     if (!loggedInUser) {
-      alert('Please log in first.');
+      alert("Please log in first.");
       return;
     }
 
-    if (createNewUser(workerData, loggedInUser.username)) {
-      alert('Worker registered successfully!');
-      reset();  // To clear the form fields
+    const regularUserData = { ...workerData, isAdmin: false }; // set the isAdmin attribute to false
+    if (createNewUser(regularUserData, loggedInUser.username)) {
+      alert("Worker registered successfully!");
+      reset(); // To clear the form fields
     }
-  }
+  };
 
   return (
     <div>
@@ -27,7 +38,7 @@ const AdminUsers = () => {
           <label>Worker Username:</label>
           <input
             type="text"
-            {...register('username', { required: 'Username is required' })}
+            {...register("username", { required: "Username is required" })}
           />
           {errors.username && <p>{errors.username.message}</p>}
         </div>
@@ -35,16 +46,25 @@ const AdminUsers = () => {
           <label>Email:</label>
           <input
             type="email"
-            {...register('email', { required: 'Email is required' })}
+            {...register("email", { required: "Email is required" })}
           />
           {errors.email && <p>{errors.email.message}</p>}
         </div>
         <div>
           <label>Password:</label>
           <input
-            type="password"
-            {...register('password', { required: 'Password is required' })}
-          />
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              id="password"
+              {...register("password", {
+                required: "This field is required",
+                pattern: {
+                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/,
+                  message:
+                    "Password must contain one number, one uppercase letter and one lowercase letter",
+                },
+              })}
+            />
           {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div>
@@ -53,6 +73,6 @@ const AdminUsers = () => {
       </form>
     </div>
   );
-}
+};
 
 export default AdminUsers;

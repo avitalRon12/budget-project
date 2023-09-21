@@ -11,6 +11,7 @@ const Register = () => {
     formState: { errors },
     watch,
   } = useForm();
+  const [isAdmin, setIsAdmin] = useState(true);
   const [isPaymentComplete, setIsPaymentComplete] = useState(false);
   const navigate = useNavigate();
   const { createNewUser, addPaymentToUser } = useContext(UserContext);
@@ -22,7 +23,9 @@ const Register = () => {
       alert("Please fill out payment fields");
       return;
     }
-    const success = createNewUser({...data, purchases:[]});
+    const adminData = { ...data, isAdmin: true }; // set the isAdmin attribute to true
+    const success = createNewUser(adminData);
+
     if (success) {
       addPaymentToUser(data.username, paymentData);
       navigate("/login");
