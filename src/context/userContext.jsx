@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext({
   users: [],
-  setUsers: () => {},
-  createNewUser: () => {},
-  login: () => {},
+  setUsers: () => { },
+  createNewUser: () => { },
+  login: () => { },
   loggedInUser: null,
-  setLoggedInUser: () => {},
-  addPaymentToUser: () => {},
+  setLoggedInUser: () => { },
+  addPaymentToUser: () => { },
 });
 
 // eslint-disable-next-line react/prop-types
@@ -60,7 +60,16 @@ const UserProvider = ({ children }) => {
             }
 
             workers.push(newUser);
-            return { ...user, workers };
+            const updatedUser = { ...user, workers };
+
+            // If the updated user is the currently logged in user,
+            // update loggedInUser in state and local storage
+            if (loggedInUser && loggedInUser.username === user.username) {
+              setLoggedInUser(updatedUser);
+              localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+            }
+
+            return updatedUser;
           }
           return user;
         });
@@ -73,6 +82,7 @@ const UserProvider = ({ children }) => {
     });
     return userCreated;
   };
+
 
   const login = ({ username, password }) => {
     const userExists = users.find((user) => user.username === username);
@@ -105,8 +115,12 @@ const UserProvider = ({ children }) => {
       }
       return alert("Wrong credentials!");
     }
+    setLoggedInUser(userExists);
+    localStorage.setItem("loggedInUser", JSON.stringify(userExists));
+    return ;
   };
 
+  const navigate = useNavigate();
   const navigate = useNavigate();
 
   const logout = () => {
