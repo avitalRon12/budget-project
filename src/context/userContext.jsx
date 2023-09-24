@@ -11,7 +11,6 @@ export const UserContext = createContext({
   addPaymentToUser: () => { },
 });
 
-// eslint-disable-next-line react/prop-types
 const UserProvider = ({ children }) => {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || []
@@ -25,7 +24,6 @@ const UserProvider = ({ children }) => {
     console.log(newUser);
     let userCreated = true;
     setUsers((prev) => {
-      // Check if the username is the same as the logged in admin
       if (loggedInUser && loggedInUser.username === newUser.username) {
         alert(
           "You can't use the same username as the currently logged-in admin."
@@ -34,7 +32,6 @@ const UserProvider = ({ children }) => {
         return prev;
       }
 
-      // Check if the username already exists in the user list
       if (prev.some((user) => user.username === newUser.username)) {
         alert(
           "Username already exists in users! Please choose a different one."
@@ -117,9 +114,6 @@ const UserProvider = ({ children }) => {
       }
       return alert("Wrong credentials!");
     }
-    // setLoggedInUser(userExists);
-    // localStorage.setItem("loggedInUser", JSON.stringify(userExists));
-    // return ;
   };
 
   const navigate = useNavigate();

@@ -74,21 +74,6 @@ const PurchaseForm = () => {
           {errors.unitPrice && <p>{errors.unitPrice.message}</p>}
         </div>
 
-      <div>
-        <label htmlFor="unitPrice">Unit Price(in ₪):</label>
-        <input
-          type="number"
-          id="unitPrice"
-          onChange={e => {
-            const value = Number(e.target.value);
-            setUnitPrice(value);
-            setValue('unitPrice', value);
-          }}
-        />
-
-        {errors.unitPrice && <p>{errors.unitPrice.message}</p>}
-      </div>
-
         <div>
           <label htmlFor="purchaseAmount">Purchase Amount:</label>
           <input

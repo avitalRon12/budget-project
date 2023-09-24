@@ -13,10 +13,10 @@ const Register = () => {
   } = useForm();
   const [isAdmin, setIsAdmin] = useState(true);
   const [isPaymentComplete, setIsPaymentComplete] = useState(false);
-  const navigate = useNavigate();
   const { createNewUser, addPaymentToUser } = useContext(UserContext);
   const [paymentData, setPaymentData] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     if (!isPaymentComplete) {
