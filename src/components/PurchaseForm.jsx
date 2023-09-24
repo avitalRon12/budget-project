@@ -38,9 +38,10 @@ const PurchaseForm = () => {
     if (currentUserIndex !== -1) {
       const newUsers = [...users];
       newUsers[currentUserIndex].purchases.push(purchase);
-      setUsers(newUsers)
+      setUsers(newUsers);
     };
   };
+
   console.log(users);
 
   return (
@@ -55,7 +56,7 @@ const PurchaseForm = () => {
             type="text"
             id="purchaseName"
             onChange={e => setPurchaseName(e.target.value)}
-          {...register('purchaseName', { required: 'Purchase name is required' })}
+            {...register('purchaseName', { required: 'Purchase name is required' })}
           />
           {errors.purchaseName && <p>{errors.purchaseName.message}</p>}
         </div>
