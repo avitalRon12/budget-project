@@ -24,13 +24,16 @@ const Register = () => {
       return;
     }
     const adminData = { ...data, isAdmin: true }; // set the isAdmin attribute to true
-    const success = createNewUser(adminData);
+    const success = createNewUser({...adminData, purchases:[]});
 
     if (success) {
       addPaymentToUser(data.username, paymentData);
       navigate("/login");
     }
   };
+
+  // const success = createNewUser({...data, purchases:[]});
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
