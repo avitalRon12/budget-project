@@ -39,6 +39,7 @@ const PurchaseForm = () => {
       const newUsers = [...users];
       newUsers[currentUserIndex].purchases.push(purchase);
       setUsers(newUsers);
+       localStorage.setItem('users', JSON.stringify(newUsers));
     };
   };
 

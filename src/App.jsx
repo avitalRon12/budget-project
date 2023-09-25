@@ -14,6 +14,7 @@ import AdminCalendar from "./pages/AdminCalendar"
 import AdminLayout from "./components/AdminLayout";
 import AdminPurchase from "./pages/AdminPurchase";
 import WorkerLayout from "./pages/WorkerLayout";
+import AdminIncome from "./pages/AdminIncome";
 
 const App = () => {
   const { users } = useContext(UserContext);
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="adminUsers" element={<AdminUsers />}></Route>
           <Route path="adminCalendar" element={<AdminCalendar />}></Route>
           <Route path="adminPurchase" element={<AdminPurchase />}></Route>
+          <Route path="adminIncome" element={<AdminIncome />}></Route>
         </Route>
         <Route path="/worker" element={<WorkerLayout/>}></Route>
       </Routes>

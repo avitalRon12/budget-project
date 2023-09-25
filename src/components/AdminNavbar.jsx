@@ -31,6 +31,9 @@ const AdminNavbar = () => {
         <li>
           <Link to={"/admin/adminPurchase"}>Purchase info</Link>
         </li>
+        <li>
+          <Link to={"/admin/adminIncome"}>Income info</Link>
+        </li>
         <button onClick={logout}>Logout</button>
       </ul>
     </>
