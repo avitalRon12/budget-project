@@ -13,7 +13,7 @@
   flex-direction: row;
   width: 100vw;
   height: 10vh;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   z-index: 1;
   background-image: linear-gradient(var(--navbar-background), #001529);
@@ -46,7 +46,7 @@
   text-decoration: none;
 }
 
-.button {
+.button1 {
   border: 0px solid transparent;
   border-radius: 7px;
   transition: all 0.3s;
@@ -57,28 +57,13 @@
   color: var(--navbar-text);
 }
 
-.button:hover {
+.button1:hover {
   background-image: radial-gradient(var(--navbar-background), #03045d);
   color: white;
   transform: scale(1.2);
 }
 
-.logout-button {
-  border: 0px solid transparent;
-  border-radius: 7px;
-  transition: all 0.3s;
-  cursor: pointer;
-  background: var(--navbar-background);
-  margin-right: 3vw;
-  padding: 3px;
-  color: var(--navbar-text);
-}
 
-.logout-button:hover {
-  background-image: radial-gradient(var(--navbar-background), #03045d);
-  color: white;
-  transform: scale(1.2);
-}
 
 .button {
     position: relative;

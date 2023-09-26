@@ -16,26 +16,27 @@ const AdminNavbar = () => {
             loggedInUser.username.slice(1)
             }`}
         </span>
+        
         <div className="navbar-ul-cont">
           <ul className="navbar-ul">
-            <li>
-              <Link to={"/admin/adminDash"} className="button">Dashboard</Link>
-            </li>
-            <li>
-              <Link to={"/admin/adminCalendar"} className="button">Calendar</Link>
-            </li>
-            <li>
-              <Link to={"/admin/adminUsers"} className="button">Users</Link>
-            </li>
-            <li>
-              <Link to={"/admin/adminPurchase"} className="button">Purchases</Link>
-            </li>
-            <li>
-              <Link to={"/admin/adminIncome"} className="button">Incomes</Link>
-            </li>
-          </ul>
+          <li>
+            <Link to={"/admin/adminDash"} className="button1">Dashboard</Link>
+          </li>
+          <li>
+            <Link to={"/admin/adminCalendar"} className="button1">Calendar</Link>
+          </li>
+          <li>
+            <Link to={"/admin/adminUsers"} className="button1">Users</Link>
+          </li>
+          <li>
+            <Link to={"/admin/adminPurchase"} className="button1">Purchases</Link>
+          </li>
+          <li>
+            <Link to={"/admin/adminIncome"} className="button1">Incomes</Link>
+          </li>
+        </ul>
         </div>
-        <button onClick={logout} className="logout-button">Logout</button>
+          <button className="button"onClick={logout}>Logout</button>
       </div>
     </>
   );
