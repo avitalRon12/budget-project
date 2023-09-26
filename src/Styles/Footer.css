@@ -1,5 +1,5 @@
 .footer-cont {
-    position: fixed;
+    position: static;
     bottom: 0;
     width: 100vw;
     display: flex;
@@ -10,5 +10,4 @@
 
 .social-media-cont {
     display: flex;
-    
 }
