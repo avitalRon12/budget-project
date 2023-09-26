@@ -1,46 +1,83 @@
-.welcome-cont {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    height: 100vh;
-    position: relative;
-    background-color: #0000000e;
+/* Base styles and resets */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f6f6f6;
 }
 
-.welcome-cont::before {
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Main welcome container */
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f6f6f6;
+    background-image: url("../assets/images/money-control-and-budget-planning-vector-14758009-removebg-preview.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.welcome-container::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../assets/images/money-control-and-budget-planning-vector-14758009-removebg-preview.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: blur(1px);
-    z-index: -1;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
 }
 
-.welcome-cont-small {
-    background-color: #E1DEE7d0;
-    border-radius: 50px;
-    padding: 10px;
+/* Content box styling */
+.content-box {
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 40px 60px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.welcome-cont h1 {
-    font-size: 7em;
-    margin-bottom: 10vh;
-    margin-top: 0;
-    text-shadow: 4px 6px 5px #F7F6FB;
+.welcome-header {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
 }
 
-.welcome-text {
+/* Action items */
+.action-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 20px;
+    
+
+}
+
+.action-item {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    text-shadow: 2px 2px 2px #F7F6FB;
+}
+
+.action-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 6px;
+    background-color: #00143c;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+.action-link:hover {
+    background-color: #0056b3;
 }
