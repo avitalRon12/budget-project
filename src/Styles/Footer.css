@@ -6,6 +6,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #23263A;
+    color: #ffffff;
 }
 
 .social-media-cont {

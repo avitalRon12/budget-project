@@ -9,18 +9,10 @@ const AdminPurchase = () => {
     : -1;
 
   const deleteBtn = (purchaseIndex) => {
-    if (currentUserIndex === -1) return; // If no user is found, return early
-
-    // Clone the users array so as not to mutate state directly
+    if (currentUserIndex === -1) return;
     const newUsers = [...users];
-
-    // Remove the purchase from the user's purchases array
     newUsers[currentUserIndex].purchases.splice(purchaseIndex, 1);
-
-    // Update users in context (assuming you have a setter for users in your context)
     setUsers(newUsers);
-
-    // Update the localStorage with the new users array
     localStorage.setItem("users", JSON.stringify(newUsers));
   };
 
