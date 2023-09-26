@@ -8,7 +8,7 @@ const AdminLayout = () => {
   const { loggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  if (loggedInUser==null) navigate("/error");
+  if (loggedInUser == null) navigate("/error");
   return (
     <>
       <AdminNavbar />

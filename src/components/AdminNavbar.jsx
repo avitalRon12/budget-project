@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/userContext";
-import { useNavigate } from "react-router";
 
 
 const AdminNavbar = () => {
@@ -18,9 +17,6 @@ const AdminNavbar = () => {
       <ul>
         <li>
           <Link to={"/admin/adminDash"}>Dashboard</Link>
-        </li>
-        <li>
-          <Link to={"/admin/adminRequests"}>Requests</Link>
         </li>
         <li>
           <Link to={"/admin/adminCalendar"}>Calendar</Link>

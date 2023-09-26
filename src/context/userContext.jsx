@@ -1,11 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext({
   users: [],
-  setUsers: () => {  },
-  createNewUser: () => {  },
-  login: () => {  },
+  setUsers: () => { },
+  createNewUser: () => { },
+  login: () => { },
   loggedInUser: null,
   setLoggedInUser: () => { },
   addPaymentToUser: () => { },
@@ -16,9 +16,9 @@ const UserProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("users")) || []
   );
 
-    const [loggedInUser, setLoggedInUser] = useState(
-      JSON.parse(localStorage.getItem("loggedInUser")) || null
-    );
+  const [loggedInUser, setLoggedInUser] = useState(
+    JSON.parse(localStorage.getItem("loggedInUser")) || null
+  );
 
   const createNewUser = (newUser, parentUsername = null) => {
     console.log(newUser);
@@ -62,7 +62,7 @@ const UserProvider = ({ children }) => {
               setLoggedInUser(updatedUser);
               localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
             }
-           
+
             if (loggedInUser && loggedInUser.username === user.username) {
               setLoggedInUser(updatedUser);
               localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
@@ -82,12 +82,12 @@ const UserProvider = ({ children }) => {
     return userCreated;
   };
 
-  const currentUserIndex = users.findIndex((user) => user.username === loggedInUser.username);
-
-
+  
+  
+  
   const login = ({ username, password }) => {
     const userExists = users.find((user) => user.username === username);
-
+    
     if (userExists) {
       const passwordMatch = userExists.password === password;
       if (!passwordMatch) {
@@ -119,6 +119,7 @@ const UserProvider = ({ children }) => {
   };
 
   const navigate = useNavigate();
+
 
   const logout = () => {
     setLoggedInUser(null);
@@ -152,7 +153,6 @@ const UserProvider = ({ children }) => {
         addPaymentToUser,
         loggedInUser,
         setLoggedInUser,
-        currentUserIndex,
       }}
     >
       {children}

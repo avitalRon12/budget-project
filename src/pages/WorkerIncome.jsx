@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { UserContext } from '../context/userContext'
 import IncomeForm from '../components/IncomeForm';
 
-const AdminIncome = () => {
+const WorkerIncome = () => {
   const { users, loggedInUser, currentUserIndex } = useContext(UserContext);
   console.log(users.incomes);
 
@@ -16,8 +16,9 @@ const AdminIncome = () => {
       <div>
         <IncomeForm />
       </div>
+      
     </>
   )
 }
 
-export default AdminIncome
+export default WorkerIncome
