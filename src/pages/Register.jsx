@@ -20,7 +20,6 @@ const Register = () => {
 
   const onSubmit = (data) => {
     if (!isPaymentComplete) {
-      alert("Please fill out payment fields");
       return;
     }
     const adminData = { ...data, isAdmin: true }; // set the isAdmin attribute to true

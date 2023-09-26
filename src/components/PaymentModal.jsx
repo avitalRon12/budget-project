@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-modal";
+import Cards from "react-credit-cards";
+import "react-credit-cards/es/styles-compiled.css";
 import { UserContext } from "../context/userContext";
 Modal.setAppElement("#root");
 
@@ -22,17 +24,28 @@ const PaymentModal = ({ setIsPaymentComplete, setPaymentData }) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [creditCardData, setCreditCardData] = useState({
+    cvv: '',
+    expiry: '',
+    name: '',
+    number: ''
+  });
 
-  const onSubmitPay = (data) => {
-    setPaymentData({
-      number: data.number,
-      name: data.name,
-      expiry: data.expiry,
-      cvv: data.cvv,
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setCreditCardData({
+      ...creditCardData,
+      [name]: value,
     });
+  };
+
+  const onSubmitPay = () => {
+    setPaymentData(creditCardData);
     setIsPaymentComplete(true);
     closeModal();
   };
+  
 
   const isValidExpiry = (expiry) => {
     const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
@@ -80,11 +93,60 @@ const PaymentModal = ({ setIsPaymentComplete, setPaymentData }) => {
   function closeModal() {
     setIsOpen(false);
   }
+  const validateCardNumber = (value) => {
+    // Remove any non-digit characters from the card number
+    const cardNumber = value.replace(/\D/g, '');
+  
+    // Perform the Luhn algorithm validation
+    let sum = 0;
+    let shouldDouble = false;
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+      let digit = parseInt(cardNumber.charAt(i), 10);
+  
+      if (shouldDouble) {
+        digit *= 2;
+        if (digit > 9) {
+          digit -= 9;
+        }
+      }
+  
+      sum += digit;
+      shouldDouble = !shouldDouble;
+    }
+  
+    // The card number is valid if the sum is divisible by 10
+    return sum % 10 === 0;
+  };
+  
+  const validateCardExpiry = (value) => {
+    const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+  
+    if (!regex.test(value)) {
+      return false;
+    }
+  
+    const [month, year] = value.split('/');
+    const currentYear = new Date().getFullYear() % 100;
+    const currentMonth = new Date().getMonth() + 1;
+  
+    const expiryYear = parseInt(year, 10);
+    const expiryMonth = parseInt(month, 10);
+  
+    if (
+      expiryYear < currentYear ||
+      (expiryYear === currentYear && expiryMonth < currentMonth)
+    ) {
+      return false;
+    }
+  
+    return true;
+  };
+  
 
   return (
     <>
       <div>
-      <button type="button" onClick={openModal}>Payment Information</button>
+        <button type="button" onClick={openModal}>Payment Information</button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -92,47 +154,60 @@ const PaymentModal = ({ setIsPaymentComplete, setPaymentData }) => {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <div>
-            <form onSubmit={handleSubmit(onSubmitPay)}>
-              <input
-                type="text"
-                placeholder="Card Number"
-                {...register("number", { required: true })}
-              />
+          <Cards
+            cvc={creditCardData.cvc}
+            expiry={creditCardData.expiry}
+            name={creditCardData.name}
+            number={creditCardData.number}
+          />
+          <form onSubmit={handleSubmit(onSubmitPay)}>
+            <input
+              type="text"
+              name="number"
+              placeholder="Card Number"
+              {...register("number", { 
+                required: true,
+                validate: value => validateCardNumber(value) || 'Invalid card number'
+              })}
+              onChange={handleInputChange}
+            />
+            {errors.number && <span>{errors.number.message}</span>}
 
-              <input
-                type="text"
-                placeholder="Name"
-                {...register("name", { required: true })}
-              />
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              {...register("name", { required: true })}
+              onChange={handleInputChange}
+            />
 
-              <input
-                type="text"
-                placeholder="Expiry"
-                {...register("expiry", {
-                  required: true,
-                  validate: (value) =>
-                    isValidExpiry(value) || "Invalid expiry date",
-                })}
-              />
-              {errors.expiry && (
-                <span>Incorrect expiry date, try using 11/22 format</span>
-              )}
+            <input
+              type="text"
+              name="expiry"
+              placeholder="Expiry MM/YY"
+              {...register("expiry", {
+                required: true,
+                validate: value => validateCardExpiry(value) || 'Invalid expiry date'
+              })}
+              onChange={handleInputChange}
+            />
+            {errors.expiry && <span>{errors.expiry.message}</span>}
 
-              <input
-                type="text"
-                placeholder="3-digit CVV"
-                {...register("cvv", {
-                  required: true,
-                  maxLength: 3,
-                  minLength: 3,
-                })}
-              />
-              {errors.cvv && <span>3 digit security code is required</span>}
+            <input
+              type="text"
+              name="cvv"
+              placeholder="3-digit CVV"
+              {...register("cvv", {
+                required: true,
+                maxLength: 3,
+                minLength: 3,
+              })}
+              onChange={handleInputChange}
+            />
+            {errors.cvv && <span>{errors.cvv.message}</span>}
 
-              <button type="submit">Apply</button>
-            </form>
-          </div>
+            <button type="submit">Apply</button>
+          </form>
           <button onClick={closeModal}>close</button>
         </Modal>
       </div>
