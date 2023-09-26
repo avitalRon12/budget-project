@@ -35,28 +35,29 @@ const AdminDashboard = () => {
 
   
   
-  const totalPurchases = () => {
-    let total = 0;
-    users.forEach(user => {
-        if(user.purchases) {
-          user.purchases.forEach(purchase => {
-            total += purchase.total; // assuming each purchase has a 'total' field
-          });
-        }
-      });
-    return total;
-  }
-  const totalIncomes = () => {
+const totalPurchases = () => {
   let total = 0;
-  users.forEach(user => {
-      if(user.incomes) {
-        user.incomes.forEach(income => {
-          total += income.incomeAmount; // assuming each purchase has a 'total' field
-        });
-      }
+
+  if (currentUser && currentUser.purchases) {
+    currentUser.purchases.forEach(purchase => {
+      total += purchase.total; // assuming each purchase has a 'total' field
     });
-  return total;
   }
+
+  return total;
+};
+
+const totalIncomes = () => {
+  let total = 0;
+
+  if (currentUser && currentUser.incomes) {
+    currentUser.incomes.forEach(income => {
+      total += income.incomeAmount; // assuming each income has an 'incomeAmount' field
+    });
+  }
+
+  return total;
+};
   const getBarChartData = () => {
     return [
       ['Type', 'Amount', { role: 'style' }],
