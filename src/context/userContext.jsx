@@ -82,7 +82,7 @@ const UserProvider = ({ children }) => {
     return userCreated;
   };
 
-  const currentUserIndex = users.findIndex((user) => user.username === loggedInUser.username);
+  // const currentUserIndex = users.findIndex((user) => user.username === loggedInUser.username);
 
 
   const login = ({ username, password }) => {

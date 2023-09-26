@@ -1,19 +1,95 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
+import { UserContext } from "../context/userContext";
 
 const localizer = momentLocalizer(moment);
 
 const AdminCalendar = () => {
-  const [events, setEvents] = useState([
-    {
-      start: new Date(),
-      end: new Date(new Date().setHours(new Date().getHours() + 1)), // 1 hour later
-      title: "Sample Event",
-    },
-  ]);
   const [newEvent, setNewEvent] = useState({ title: "", start: new Date() });
+  const { users, loggedInUser } = useContext(UserContext);
+  const currentUser = users.find(user => user.username === loggedInUser.username);
+
+  const getUserEvents = () => {
+    let userEvents = [];
+
+    // If the logged-in user is found in the users array, process their purchases and incomes
+    if (currentUser) {
+      // Transform purchases into events
+      if (currentUser.purchases) {
+        currentUser.purchases.forEach((purchase) => {
+          const event = {
+            title: `${purchase.purchaseName}`,
+            start: new Date(purchase.datePurchased),
+            end: new Date(purchase.datePurchased), // Adjust if you have an end date
+            allDay: true,
+          };
+          userEvents.push(event);
+        });
+      }
+
+      // Transform incomes into events
+      if (currentUser.incomes) {
+        currentUser.incomes.forEach((income) => {
+          const event = {
+            title: `${income.incomeName} - ${income.incomeAmount}`,
+            start: new Date(income.dateIncome),
+            end: new Date(income.dateIncome), // Adjust if necessary
+            allDay: true,
+          };
+          console.log(`${income.incomeName} - ${income.incomeAmount}`)
+          userEvents.push(event);
+        });
+      }
+    }
+
+    return userEvents;
+  };
+  const [events, setEvents] = useState(getUserEvents);
+
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    let backgroundColor = "#f0f0f0"; // default color
+
+    // Identify incomes by their name and set them to green
+    if (currentUser.incomes.some(income => income.incomeName === event.title)) {
+        backgroundColor = "green";
+        const style = {
+            backgroundColor: backgroundColor,
+            borderRadius: "0px",
+            opacity: 0.8,
+            color: "black",
+            border: "0px",
+            display: "block"
+        };
+        return { style: style };
+    }
+
+    // Identify purchases by their name and set them to red
+    if (currentUser.purchases.some(purchase => purchase.purchaseName === event.title)) {
+        backgroundColor = "red";
+        const style = {
+            backgroundColor: backgroundColor,
+            borderRadius: "0px",
+            opacity: 0.8,
+            color: "black",
+            border: "0px",
+            display: "block"
+        };
+        return { style: style };
+    }
+
+    return {
+        style: {
+            backgroundColor: backgroundColor,
+            borderRadius: "0px",
+            opacity: 0.8,
+            color: "black",
+            border: "0px",
+            display: "block"
+        }
+    };
+};
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -56,6 +132,7 @@ const AdminCalendar = () => {
           startAccessor="start"
           endAccessor="end"
           style={{ height: 500 }}
+          eventPropGetter={eventStyleGetter}
         />
       </div>
     </div>
