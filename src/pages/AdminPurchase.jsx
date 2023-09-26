@@ -14,6 +14,9 @@ const AdminPurchase = () => {
       <div>
         <PurchaseForm />
       </div>
+      <div>
+       
+      </div>
     </>
   )
 }

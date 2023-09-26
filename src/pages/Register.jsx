@@ -24,7 +24,7 @@ const Register = () => {
       return;
     }
     const adminData = { ...data, isAdmin: true }; // set the isAdmin attribute to true
-    const success = createNewUser({...adminData, purchases:[]});
+    const success = createNewUser({...adminData });
 
     if (success) {
       addPaymentToUser(data.username, paymentData);

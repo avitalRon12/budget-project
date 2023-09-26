@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
 
 const IncomeForm = () => {
-  const { users, loggedInUser, setLoggedInUser, setUsers, currentUserIndex } = useContext(UserContext)
+  const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   const [currentUser, setCurrentUser] = useState('')
@@ -29,6 +29,7 @@ const IncomeForm = () => {
       category: data.category,
       dateIncome: data.dateIncome
     };
+    const currentUserIndex = loggedInUser ? users.findIndex((user) => user.username === loggedInUser.username) : -1;
     if (currentUserIndex !== -1) {
       const newUsers = [...users];
       if (!newUsers[currentUserIndex].incomes) {
