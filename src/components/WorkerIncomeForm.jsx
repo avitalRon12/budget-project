@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
 
-const IncomeForm = () => {
+const WorkerIncomeForm = () => {
   const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
@@ -107,4 +107,4 @@ const IncomeForm = () => {
   );
 };
 
-export default IncomeForm;
+export default WorkerIncomeForm;
