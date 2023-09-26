@@ -46,8 +46,6 @@ const PurchaseForm = () => {
     };
   };
 
-  console.log(users);
-
   return (
     <>
       <div>
@@ -130,6 +128,7 @@ const PurchaseForm = () => {
 
         <button type="submit">Submit</button>
       </form>
+      
     </>
   );
 };

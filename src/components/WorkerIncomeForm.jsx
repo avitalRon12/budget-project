@@ -103,6 +103,7 @@ const WorkerIncomeForm = () => {
 
         <button type="submit">Submit</button>
       </form>
+
     </>
   );
 };
