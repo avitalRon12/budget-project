@@ -1,0 +1,14 @@
+.footer-cont {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-media-cont {
+    display: flex;
+    
+}

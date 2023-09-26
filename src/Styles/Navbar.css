@@ -1,0 +1,32 @@
+.navbar-cont {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 10vh;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 1;
+}
+
+.navbar-span {
+    font-size: 2em;
+}
+
+.navbar-ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 2em ;
+}
+
+.navbar-ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar-ul li a {
+    text-decoration: none;
+}
