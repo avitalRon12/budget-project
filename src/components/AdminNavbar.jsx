@@ -20,9 +20,6 @@ const AdminNavbar = () => {
           <Link to={"/admin/adminDash"}>Dashboard</Link>
         </li>
         <li>
-          <Link to={"/admin/adminRequests"}>Requests</Link>
-        </li>
-        <li>
           <Link to={"/admin/adminCalendar"}>Calendar</Link>
         </li>
         <li>
