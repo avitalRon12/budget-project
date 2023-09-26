@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
 
 const PurchaseForm = () => {
-  const { users, loggedInUser, setLoggedInUser, setUsers} = useContext(UserContext)
+  const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   const [currentUser, setCurrentUser] = useState('')
@@ -34,7 +34,7 @@ const PurchaseForm = () => {
       total: total,
       datePurchased: data.datePurchased
     };
-    const currentUserIndex=loggedInUser ? users.findIndex((user) => user.username===loggedInUser.username) : -1;
+    const currentUserIndex = loggedInUser ? users.findIndex((user) => user.username === loggedInUser.username) : -1;
     if (currentUserIndex !== -1) {
       const newUsers = [...users];
       if (!newUsers[currentUserIndex].purchases) {
@@ -42,8 +42,8 @@ const PurchaseForm = () => {
       }
       newUsers[currentUserIndex].purchases.push(purchase);
       setUsers(newUsers);
-       localStorage.setItem('users', JSON.stringify(newUsers));
-    };
+      localStorage.setItem('users', JSON.stringify(newUsers));
+    };
   };
 
   return (

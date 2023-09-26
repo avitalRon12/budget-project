@@ -24,7 +24,7 @@ const WorkerIncomeForm = () => {
       category: data.category,
       dateIncome: data.dateIncome
     };
-    const currentUserIndex=loggedInUser ? users.findIndex((user) => user.username===loggedInUser.username) : -1;
+    const currentUserIndex = loggedInUser ? users.findIndex((user) => user.username === loggedInUser.adminUsername) : -1;
     if (currentUserIndex !== -1) {
       const newUsers = [...users];
       if (!newUsers[currentUserIndex].incomes) {
@@ -32,7 +32,7 @@ const WorkerIncomeForm = () => {
       }
       newUsers[currentUserIndex].incomes.push(income);
       setUsers(newUsers);
-       localStorage.setItem('users', JSON.stringify(newUsers));
+      localStorage.setItem('users', JSON.stringify(newUsers));
     };
   };
 

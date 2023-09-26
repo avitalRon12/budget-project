@@ -13,18 +13,8 @@ const WorkerNavbar = () => {
                     loggedInUser.username.slice(1)
                     }`}
             </h1>
-            <ul>
-                <li>
-                    <Link to={"/worker/workerDash"}>Dashboard</Link>
-                </li>
-                <li>
-                    <Link to={"/worker/workerPurchase"}>Purchase info</Link>
-                </li>
-                <li>
-                    <Link to={"/worker/workerIncome"}>Income info</Link>
-                </li>
-                <button onClick={logout}>Logout</button>
-            </ul>
+            <h2>Manage expenses and incomes</h2>
+            <button onClick={logout}>Logout</button>
 
         </>
     )
