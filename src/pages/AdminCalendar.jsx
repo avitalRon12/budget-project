@@ -1,19 +1,76 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
+import { UserContext } from "../context/userContext";
 
 const localizer = momentLocalizer(moment);
 
 const AdminCalendar = () => {
-  const [events, setEvents] = useState([
-    {
-      start: new Date(),
-      end: new Date(new Date().setHours(new Date().getHours() + 1)), // 1 hour later
-      title: "Sample Event",
-    },
-  ]);
   const [newEvent, setNewEvent] = useState({ title: "", start: new Date() });
+  const { users, loggedInUser } = useContext(UserContext);
+  const currentUser = users.find(user => user.username === loggedInUser.username);
+
+  const getUserEvents = () => {
+    let userEvents = [];
+
+    if (currentUser) {
+      // Transform purchases into events
+      if (currentUser.purchases) {
+        currentUser.purchases.forEach((purchase) => {
+          const event = {
+            title: `${purchase.purchaseName} - ${purchase.total}`,
+            start: new Date(purchase.datePurchased),
+            end: new Date(purchase.datePurchased), 
+            allDay: true,
+          };
+          userEvents.push(event);
+        });
+      }
+
+      // Transform incomes into events
+      if (currentUser.incomes) {
+        currentUser.incomes.forEach((income) => {
+          const event = {
+            title: `${income.incomeName} - ${income.incomeAmount}`,
+            start: new Date(income.dateIncome),
+            end: new Date(income.dateIncome), 
+            allDay: true,
+          };
+          userEvents.push(event);
+        });
+      }
+    }
+    return userEvents;
+};
+  const [events, setEvents] = useState(getUserEvents);
+
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    let backgroundColor = "#f0f0f0"; // default color
+
+    // Check if the title contains incomeAmount to identify as an income
+    if (event.title.includes('incomeAmount')) {
+        backgroundColor = "green";
+    }
+
+    // Check if the title contains total to identify as a purchase
+    else if (event.title.includes('total')) {
+        backgroundColor = "red";
+    }
+
+    const style = {
+        backgroundColor: backgroundColor,
+        borderRadius: "0px",
+        opacity: 0.8,
+        color: "black",
+        border: "0px",
+        display: "block"
+    };
+    
+    return { style: style };
+};
+
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
