@@ -4,7 +4,7 @@ import { UserContext } from '../context/userContext'
 import IncomeForm from '../components/IncomeForm';
 
 const AdminIncome = () => {
-  const { users, loggedInUser,setUsers } = useContext(UserContext);
+  const { users, loggedInUser, setUsers } = useContext(UserContext);
   const currentUserIndex = loggedInUser
     ? users.findIndex((user) => user.username === loggedInUser.username)
     : -1;
@@ -37,15 +37,18 @@ const AdminIncome = () => {
       <div>
         <h1>Income History</h1>
         <ul>
-          {currentUserIndex !== -1 &&
-            users[currentUserIndex].incomes.map((incomes, index) => (
+          {currentUserIndex !== -1 && users[currentUserIndex].incomes && users[currentUserIndex].incomes.length > 0 ? (
+            users[currentUserIndex].incomes.map((income, index) => (
               <li key={index}>
                 <p>
-                  {incomes?.incomeName} - {incomes?.incomeAmount} ₪
+                  {income?.incomeName} - {income?.incomeAmount} ₪
                 </p>
                 <button onClick={() => deleteBtn(index)}>delete</button>
               </li>
-            ))}
+            ))
+          ) : (
+            <p>You have no income history</p>
+          )}
         </ul>
       </div>
     </>
