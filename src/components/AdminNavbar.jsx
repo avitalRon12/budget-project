@@ -33,7 +33,7 @@ const AdminNavbar = () => {
             <Link to={"/admin/adminIncome"}>Incomes</Link>
           </li>
         </ul>
-          <button onClick={logout}>Logout</button>
+          <button className="button"onClick={logout}>Logout</button>
       </div>
     </>
   );
