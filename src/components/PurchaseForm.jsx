@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
 
 const PurchaseForm = () => {
-  const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
+  const { users, loggedInUser, setLoggedInUser, setUsers, currentUserIndex } = useContext(UserContext)
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   const [currentUser, setCurrentUser] = useState('')
@@ -34,7 +34,6 @@ const PurchaseForm = () => {
       total: total,
       datePurchased: data.datePurchased
     };
-    const currentUserIndex = users.findIndex((user) => user.username === loggedInUser.username)
     if (currentUserIndex !== -1) {
       const newUsers = [...users];
       newUsers[currentUserIndex].purchases.push(purchase);
