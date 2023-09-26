@@ -3,7 +3,7 @@ import PurchaseForm from "../components/PurchaseForm";
 import { UserContext } from "../context/userContext";
 
 const AdminPurchase = () => {
-  const { users, loggedInUser,setUsers } = useContext(UserContext);
+  const { users, loggedInUser, setUsers } = useContext(UserContext);
   const currentUserIndex = loggedInUser
     ? users.findIndex((user) => user.username === loggedInUser.username)
     : -1;
@@ -36,15 +36,19 @@ const AdminPurchase = () => {
       <div>
         <h1>Purchase History</h1>
         <ul>
-          {currentUserIndex !== -1 &&
-            users[currentUserIndex].purchases.map((purchases, index) => (
+          {currentUserIndex !== -1 && users[currentUserIndex]?.purchases && users[currentUserIndex]?.purchases.length > 0 ? (
+            users[currentUserIndex].purchases.map((purchase, index) => (
               <li key={index}>
-                <p>
-                  {purchases?.purchaseName} - {purchases?.total} ₪
-                </p>
+                <div>
+                  <p>Item name: {purchase?.purchaseName}</p>
+                  <p>Total Price: {purchase?.total} ₪</p>
+                </div>
                 <button onClick={() => deleteBtn(index)}>delete</button>
               </li>
-            ))}
+            ))
+          ) : (
+            <p>You have no history</p>
+          )}
         </ul>
       </div>
     </>
