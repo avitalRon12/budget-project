@@ -1,5 +1,5 @@
 import React from 'react'
-import IncomeForm from '../components/IncomeForm'
+import WorkerIncomeForm from '../components/WorkerIncomeForm'
 
 const WorkerIncome = () => {
   return (
@@ -9,7 +9,7 @@ const WorkerIncome = () => {
         <h2>Here you can add income from different sources</h2>
       </div>
       <div>
-        <IncomeForm />
+        <WorkerIncomeForm />
       </div>
       <div>
 

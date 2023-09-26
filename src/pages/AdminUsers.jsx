@@ -23,7 +23,7 @@ const AdminUsers = () => {
       return;
     }
 
-    const regularUserData = { ...workerData, isAdmin: false }; // set the isAdmin attribute to false
+    const regularUserData = { ...workerData, isAdmin: false, adminUsername: loggedInUser.username }; // set the isAdmin attribute to false
     if (createNewUser(regularUserData, loggedInUser.username)) {
       alert("Worker registered successfully!");
       reset(); // To clear the form fields
