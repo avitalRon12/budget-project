@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../context/userContext';
+import React, { useContext } from 'react';
+import { UserContext } from '../context/userContext';
 import IncomeForm from '../components/IncomeForm';
+import '../Styles/Incomes.css';
 import '../Styles/Incomes.css';
 
 const AdminIncome = () => {
