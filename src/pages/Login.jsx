@@ -12,9 +12,9 @@ const Login = () => {
   useEffect(() => {
     if (loggedInUser) {
       if (loggedInUser.isAdmin) {
-        navigate("/admin");
+        navigate("/admin/adminDash");
       } else {
-        navigate("/worker");
+        navigate("/worker/workerDash");
       }
     }
 }, [loggedInUser, navigate]);
@@ -33,7 +33,7 @@ const Login = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      <Link to="/AboutUs">Kaki</Link>
+      <Link to="/">Kaki</Link>
     </div>
   );
 };

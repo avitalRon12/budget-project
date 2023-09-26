@@ -1,14 +1,15 @@
 .footer-cont {
-    position: fixed;
+    position: static;
     bottom: 0;
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #23263A;
+    color: #ffffff;
 }
 
 .social-media-cont {
     display: flex;
-    
 }

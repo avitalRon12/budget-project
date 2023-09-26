@@ -24,13 +24,13 @@ const AdminNavbar = () => {
             <Link to={"/admin/adminCalendar"}>Calendar</Link>
           </li>
           <li>
-            <Link to={"/admin/adminUsers"}>Users Management</Link>
+            <Link to={"/admin/adminUsers"}>Users</Link>
           </li>
           <li>
-            <Link to={"/admin/adminPurchase"}>Purchase info</Link>
+            <Link to={"/admin/adminPurchase"}>Purchases</Link>
           </li>
           <li>
-            <Link to={"/admin/adminIncome"}>Income info</Link>
+            <Link to={"/admin/adminIncome"}>Incomes</Link>
           </li>
         </ul>
           <button onClick={logout}>Logout</button>

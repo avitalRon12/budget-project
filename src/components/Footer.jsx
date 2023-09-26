@@ -20,11 +20,13 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          Social media
+          Social media:
         </div>
         <div className='social-media-cont'>
           <div>
-            <a href="https://www.instagram.com/">Instagram</a>
+            <a href="https://www.instagram.com/">
+              instagram
+            </a>
           </div>
           <div>
             <a href="https://www.facebook.com/">Facebook</a>

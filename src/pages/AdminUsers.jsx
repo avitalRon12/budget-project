@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../context/userContext"; // Update the path accordingly
 
 const AdminUsers = () => {
-  const { createNewUser, loggedInUser } = useContext(UserContext);
+  const { users, setUsers, createNewUser, loggedInUser } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -16,6 +16,18 @@ const AdminUsers = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  const currentUserIndex = loggedInUser
+    ? users.findIndex((user) => user.username === loggedInUser.username)
+    : -1;
+
+  const deleteBtn = (workerIndex) => {
+    if (currentUserIndex === -1) return;
+    const newUsers = [...users];
+    newUsers[currentUserIndex].workers.splice(workerIndex, 1);
+    setUsers(newUsers);
+    localStorage.setItem("users", JSON.stringify(newUsers));
+  };
 
   const onSubmit = (workerData) => {
     if (!loggedInUser) {
@@ -55,24 +67,43 @@ const AdminUsers = () => {
         <div>
           <label>Password:</label>
           <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              id="password"
-              {...register("password", {
-                required: "This field is required",
-                pattern: {
-                  value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/,
-                  message:
-                    "Password must contain one number, one uppercase letter and one lowercase letter",
-                },
-              })}
-            />
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            id="password"
+            {...register("password", {
+              required: "This field is required",
+              pattern: {
+                value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/,
+                message:
+                  "Password must contain one number, one uppercase letter and one lowercase letter",
+              },
+            })}
+          />
           {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div>
           <button type="submit">Register Worker</button>
         </div>
       </form>
+      <div>
+        <h2>Registered workers</h2>
+        <ul>
+          {currentUserIndex !== -1 && users[currentUserIndex]?.workers && users[currentUserIndex]?.workers.length > 0 ? (
+            users[currentUserIndex].workers.map((worker, index) => (
+              <li key={index}>
+                <div>
+                  <p>Username: {worker?.username}</p>
+                  <p>Email: {worker?.email} </p>
+                  <p>Password: {worker?.password} </p>
+                </div>
+                <button onClick={() => deleteBtn(index)}>delete</button>
+              </li>
+            ))
+          ) : (
+            <p>You have no workers registered</p>
+          )}
+        </ul>
+      </div>
     </div>
   );
 };

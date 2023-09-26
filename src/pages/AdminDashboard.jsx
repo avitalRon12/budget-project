@@ -67,7 +67,7 @@ const totalIncomes = () => {
   };
   return (
     <div>
-      <h2>Admin Dashboard</h2>
+      <h2>Dashboard</h2>
       <Chart
         width={"500px"}
         height={"300px"}
@@ -75,7 +75,7 @@ const totalIncomes = () => {
         loader={<div>Loading Chart</div>}
         data={getPurchaseChartData()}
         options={{
-          title: "Purchases Distribution",
+          title: "Purchase Distribution",
         }}
       />
       <Chart
@@ -85,7 +85,7 @@ const totalIncomes = () => {
         loader={<div>Loading Chart</div>}
         data={getIncomeChartData()}
         options={{
-          title: "Incomes Distribution",
+          title: "Income Distribution",
         }}
       />
       <Chart

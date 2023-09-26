@@ -1,0 +1,46 @@
+.welcome-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh;
+    position: relative;
+    background-color: #0000000e;
+}
+
+.welcome-cont::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../assets/images/money-control-and-budget-planning-vector-14758009-removebg-preview.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(1px);
+    z-index: -1;
+}
+
+.welcome-cont-small {
+    background-color: #E1DEE7d0;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+.welcome-cont h1 {
+    font-size: 7em;
+    margin-bottom: 10vh;
+    margin-top: 0;
+    text-shadow: 4px 6px 5px #F7F6FB;
+}
+
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-shadow: 2px 2px 2px #F7F6FB;
+}
