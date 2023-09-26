@@ -9,68 +9,65 @@ const localizer = momentLocalizer(moment);
 const AdminCalendar = () => {
   const [newEvent, setNewEvent] = useState({ title: "", start: new Date() });
   const { users, loggedInUser } = useContext(UserContext);
-  const currentUser = users.find(user => user.username === loggedInUser.username);
+  const currentUser = users.find(
+    (user) => user.username === loggedInUser.username
+  );
 
   const getUserEvents = () => {
     let userEvents = [];
 
-    if (currentUser) {
-      // Transform purchases into events
-      if (currentUser.purchases) {
-        currentUser.purchases.forEach((purchase) => {
-          const event = {
-            title: `${purchase.purchaseName} - ${purchase.total}`,
-            start: new Date(purchase.datePurchased),
-            end: new Date(purchase.datePurchased), 
-            allDay: true,
-          };
-          userEvents.push(event);
-        });
-      }
-
-      // Transform incomes into events
-      if (currentUser.incomes) {
-        currentUser.incomes.forEach((income) => {
-          const event = {
-            title: `${income.incomeName} - ${income.incomeAmount}`,
-            start: new Date(income.dateIncome),
-            end: new Date(income.dateIncome), 
-            allDay: true,
-          };
-          userEvents.push(event);
-        });
-      }
+    // Transform purchases into events
+    if (currentUser.purchases) {
+      currentUser.purchases.forEach((purchase) => {
+        const event = {
+          title: `${purchase.purchaseName} - ${purchase.total}₪`,
+          start: new Date(purchase.datePurchased),
+          end: new Date(purchase.datePurchased),
+          type: "purchase", // added a type property to make it easier to identify
+          allDay: true,
+        };
+        userEvents.push(event);
+      });
     }
+
+    // Transform incomes into events
+    if (currentUser.incomes) {
+      currentUser.incomes.forEach((income) => {
+        const event = {
+          title: `${income.incomeName} + ${income.incomeAmount}₪`,
+          start: new Date(income.dateIncome),
+          end: new Date(income.dateIncome),
+          type: "income", // added a type property to make it easier to identify
+          allDay: true,
+        };
+        userEvents.push(event);
+      });
+    }
+
     return userEvents;
-};
+  };
   const [events, setEvents] = useState(getUserEvents);
 
   const eventStyleGetter = (event, start, end, isSelected) => {
     let backgroundColor = "#f0f0f0"; // default color
 
-    // Check if the title contains incomeAmount to identify as an income
-    if (event.title.includes('incomeAmount')) {
-        backgroundColor = "green";
-    }
-
-    // Check if the title contains total to identify as a purchase
-    else if (event.title.includes('total')) {
-        backgroundColor = "red";
+    if (event.type === "income") {
+      backgroundColor = "green";
+    } else if (event.type === "purchase") {
+      backgroundColor = "red";
     }
 
     const style = {
-        backgroundColor: backgroundColor,
-        borderRadius: "0px",
-        opacity: 0.8,
-        color: "black",
-        border: "0px",
-        display: "block"
+      backgroundColor: backgroundColor,
+      borderRadius: "0px",
+      opacity: 0.8,
+      color: "black",
+      border: "0px",
+      display: "block",
     };
-    
+
     return { style: style };
-};
-
-
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -113,6 +110,7 @@ const AdminCalendar = () => {
           startAccessor="start"
           endAccessor="end"
           style={{ height: 500 }}
+          eventPropGetter={eventStyleGetter} // <-- Use eventStyleGetter here
         />
       </div>
     </div>
