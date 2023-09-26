@@ -20,18 +20,19 @@ const AdminDashboard = () => {
     return data;
   };
   const getIncomeChartData = () => {
-    if (!currentUser || !currentUser.purchases) return [];
+    if (!currentUser || !currentUser.incomes) return [];
     
     // Header for the chart data
     const data = [["Income Name", "Amount"]];
     
-    // Pushing purchase data into our data array
+    // Pushing income data into our data array
     currentUser.incomes.forEach((income) => {
       data.push([income.incomeName, income.incomeAmount]);
     });
     
     return data;
-  };
+};
+
   
   
   const totalPurchases = () => {
