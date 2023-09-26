@@ -1,0 +1,70 @@
+/* Shared Form Styles */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #F7F6FB;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.form-container h2 {
+  color: #001529;
+  margin-bottom: 10px;
+}
+
+.form-container label {
+  color: #001529;
+  font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container select,
+.form-container input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #E1DEE7;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #001529;
+  /* Set a fixed height for all input elements */
+  height: 40px;
+}
+
+.form-container select {
+  appearance: none;
+}
+
+.form-container button[type="submit"] {
+  background-color: #001529;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: #001B4D;
+  transform: scale(1.05);
+}
+
+.form-container p {
+  color: red;
+  margin-top: 5px;
+}
+
+.form-container div:last-child {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #001529;
+}
