@@ -1,15 +1,47 @@
-.footer-cont {
-    position: static;
-    bottom: 0;
-    width: 100vw;
+/* Define CSS variables for the color scheme */
+:root {
+    --footer-background: #1B2A41; /* Dark blue background */
+    --footer-text: #FFFFFF; /* White text */
+    --footer-link: #E8A628; /* Orange link color */
+  }
+  
+  /* Apply the color scheme to the Footer component */
+  .footer-cont {
+    background-color: var(--footer-background);
+    color: var(--footer-text);
+    padding: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .footer-cont h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Style the phone numbers and working hours */
+  .footer-cont span {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Style the social media links */
+  .social-media-cont {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: #23263A;
-    color: #ffffff;
-}
-
-.social-media-cont {
-    display: flex;
-}
+    margin-top: 10px;
+  }
+  
+  .social-media-cont div {
+    margin: 0 10px;
+  }
+  
+  .social-media-cont a {
+    color: var(--footer-link);
+    text-decoration: none;
+  }
+  
+  .social-media-cont a:hover {
+    text-decoration: underline;
+  }
+  

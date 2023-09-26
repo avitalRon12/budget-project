@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
+import '../Styles/FormStyle.css'; // Import the shared CSS file
 
 const IncomeForm = () => {
-  const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
+  const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext);
   const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm();
 
-  const [currentUser, setCurrentUser] = useState('')
   const [incomeName, setIncomeName] = useState('');
   const [incomeAmount, setIncomeAmount] = useState(0);
   const [dateIncome, setDateIncome] = useState('');
@@ -24,7 +24,7 @@ const IncomeForm = () => {
       category: data.category,
       dateIncome: data.dateIncome
     };
-    const currentUserIndex=loggedInUser ? users.findIndex((user) => user.username===loggedInUser.username) : -1;
+    const currentUserIndex = loggedInUser ? users.findIndex((user) => user.username === loggedInUser.username) : -1;
     if (currentUserIndex !== -1) {
       const newUsers = [...users];
       if (!newUsers[currentUserIndex].incomes) {
@@ -32,19 +32,17 @@ const IncomeForm = () => {
       }
       newUsers[currentUserIndex].incomes.push(income);
       setUsers(newUsers);
-       localStorage.setItem('users', JSON.stringify(newUsers));
+      localStorage.setItem('users', JSON.stringify(newUsers));
     };
     reset();
   };
 
   return (
-    <>
-      <div>
-        <h2>Add an income</h2>
-      </div>
+    <div className="form-container">
+      <h2>Add an income</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor="incomeName">income Name:</label>
+          <label htmlFor="incomeName">Income Name:</label>
           <input
             type="text"
             id="incomeName"
@@ -55,7 +53,7 @@ const IncomeForm = () => {
         </div>
 
         <div>
-          <label htmlFor="incomeAmount">income Amount:</label>
+          <label htmlFor="incomeAmount">Income Amount:</label>
           <input
             type="number"
             id="incomeAmount"
@@ -85,27 +83,22 @@ const IncomeForm = () => {
         </div>
 
         <div>
-          <label htmlFor="dateIncome">Purchase Amount:</label>
+          <label htmlFor="dateIncome">Income Date:</label>
           <input
             type="datetime-local"
             id="dateIncome"
             onChange={e => {
-              const value = (e.target.value);
+              const value = e.target.value;
               setDateIncome(value);
               setValue('dateIncome', value);
             }}
           />
           {errors.dateIncome && <p>{errors.dateIncome.message}</p>}
-
-        </div>
-
-        <div>
-          Total Income: {incomeAmount} ₪
         </div>
 
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
   );
 };
 

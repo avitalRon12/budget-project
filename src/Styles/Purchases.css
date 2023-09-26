@@ -1,0 +1,79 @@
+/* Define CSS variables based on the provided color scheme */
+:root {
+  --page-background: #01013C;
+  /* Dark blue background */
+  --page-text: #FFFFFF;
+  /* White text color */
+  --form-background: #00013b;
+  /* Dark blue form background */
+  --form-input-border: #03045d;
+  /* Darker blue form input border */
+  --button-background: #315cfd;
+  /* Light blue button background */
+  --button-text: #FFFFFF;
+  /* White button text */
+  --segment-background: #001529;
+  /* Slightly darker blue for segments */
+}
+
+/* Apply the color scheme and enhanced styling to the AdminPurchase component */
+.admin-purchase {
+  background-color: var(--page-background);
+  color: var(--page-text);
+  padding: 20px;
+}
+
+.purchase-form {
+  background-color: var(--form-background);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-field input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--form-input-border);
+  border-radius: 5px;
+}
+
+.add-button {
+  background-color: var(--button-background);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-button:hover {
+  background-image: radial-gradient(var(--page-background), var(--button-background));
+  transform: scale(1.05);
+}
+
+.purchase-item {
+  background-color: var(--segment-background);
+  margin-bottom: 10px;
+  padding: 15px;
+  /* Increased padding for segments */
+  border-radius: 10px;
+  /* Increased border radius for segments */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  /* Enhanced box shadow for segments */
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #d60000;
+  transform: scale(1.05);
+}
