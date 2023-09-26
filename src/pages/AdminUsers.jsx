@@ -32,8 +32,10 @@ const AdminUsers = () => {
 
   return (
     <div>
-      <h1>AdminUsers</h1>
+      <h1>Worker Management</h1>
+
       <form onSubmit={handleSubmit(onSubmit)}>
+        <h3>Register a new Worker</h3>
         <div>
           <label>Worker Username:</label>
           <input
