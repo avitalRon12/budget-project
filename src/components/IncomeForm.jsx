@@ -4,7 +4,7 @@ import { UserContext } from '../context/userContext';
 
 const IncomeForm = () => {
   const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm();
 
   const [currentUser, setCurrentUser] = useState('')
   const [incomeName, setIncomeName] = useState('');
@@ -34,6 +34,7 @@ const IncomeForm = () => {
       setUsers(newUsers);
        localStorage.setItem('users', JSON.stringify(newUsers));
     };
+    reset();
   };
 
   return (
@@ -78,6 +79,7 @@ const IncomeForm = () => {
             <option value="check">Check</option>
             <option value="refund">Refund</option>
             <option value="donation">Donation</option>
+            <option value="sales">Sales</option>
           </select>
           {errors.category && <p>{errors.category.message}</p>}
         </div>

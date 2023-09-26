@@ -4,7 +4,7 @@ import { UserContext } from '../context/userContext';
 
 const PurchaseForm = () => {
   const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm();
 
   const [currentUser, setCurrentUser] = useState('')
   const [purchaseName, setPurchaseName] = useState('');
@@ -44,6 +44,7 @@ const PurchaseForm = () => {
       setUsers(newUsers);
       localStorage.setItem('users', JSON.stringify(newUsers));
     };
+    reset();
   };
 
   return (
