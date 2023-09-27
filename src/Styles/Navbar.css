@@ -176,7 +176,7 @@
     scale: 0.7;
   }
   
-  @media screen and (max-width: 718px) {
+  @media screen and (max-width: 500px) {
     .navbar-cont {
       flex-direction: column;
       height: 25vh;
