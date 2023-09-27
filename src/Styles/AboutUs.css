@@ -1,0 +1,113 @@
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(3em);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+  }
+  
+  .about-container {
+    font-family: 'Roboto', helvetica, arial, sans-serif;
+    background: linear-gradient(135deg, rgba(36, 46, 77, .9), rgba(137, 126, 121, .9));
+    color: #f5f6f8;
+    padding: 2em 10%;
+    animation: fadeIn 1.5s ease-out;
+    padding: 2em 5%;
+
+  }
+  
+  .about-header {
+    text-align: center;
+    margin-bottom: 3em;
+    animation: fadeIn 1.8s ease-out;
+  }
+  
+  .about-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .about-section {
+    margin: 3em 0;  /* Adjusting the margins */
+    margin-top: 10em;
+    padding-top: 2em;  /* Adding some padding to the top */
+    animation: fadeIn 2s ease-out;
+  }
+  
+  .about-section h2 {
+    font-size: 2em;
+    margin: 1em 0;  /* Adjusting the margins here */
+    padding: 0.5em 0;  /* Adding some padding to give breathing space */
+  }
+  
+  
+  .about-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .about-section li {
+    margin-bottom: 1em;
+  }
+  
+  .about-section h4 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .about-link {
+    color: #00d6b7;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    
+  }
+  
+  .about-link:hover {
+    text-decoration: none;
+    color: #027c5a;
+    transform: scale(1.05);
+  }
+  
+
+  
+/* Global Font Adjustment for Small Devices */
+@media screen and (max-width: 400px) {
+  
+ }
+
+
+/* Adjustments for Tablets */
+@media screen and (min-width: 400px) and (max-width: 768px) {
+    .about-section h2 {
+        margin-top: -3em;
+    }
+    .about-link{
+        position: absolute;
+        margin-top: 2em;
+    }
+}
+
+/* Optimizations for Desktop */
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .about-section {
+        margin-top: 15em; /* Or adjust this value as needed */
+    }
+    
+    .about-section h2 {
+        margin-top: 2em;
+    }
+
+}
+
+/* For Larger Desktop Screens */
+@media screen and (min-width: 993px) {
+    .about-section {
+        margin-top: 10em;
+    }
+}
+
+
+  

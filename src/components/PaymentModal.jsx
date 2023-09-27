@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import { UserContext } from "../context/userContext";
+import "./../Styles/Login.css"
 Modal.setAppElement("#root");
 
 const customStyles = {
@@ -25,7 +26,7 @@ const PaymentModal = ({ setIsPaymentComplete, setPaymentData }) => {
     formState: { errors },
   } = useForm();
   const [creditCardData, setCreditCardData] = useState({
-    cvv: '',
+    cvc: '',
     expiry: '',
     name: '',
     number: ''
@@ -146,7 +147,7 @@ const PaymentModal = ({ setIsPaymentComplete, setPaymentData }) => {
   return (
     <>
       <div>
-        <button type="button" onClick={openModal}>Payment Information</button>
+        <button type="button" className="button2" onClick={openModal}>Payment Information</button>
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -195,16 +196,16 @@ const PaymentModal = ({ setIsPaymentComplete, setPaymentData }) => {
 
             <input
               type="text"
-              name="cvv"
-              placeholder="3-digit CVV"
-              {...register("cvv", {
+              name="cvc"
+              placeholder="3-digit CVC"
+              {...register("cvc", {
                 required: true,
                 maxLength: 3,
                 minLength: 3,
               })}
               onChange={handleInputChange}
             />
-            {errors.cvv && <span>{errors.cvv.message}</span>}
+            {errors.cvc && <span>{errors.cvc.message}</span>}
 
             <button type="submit">Apply</button>
           </form>
