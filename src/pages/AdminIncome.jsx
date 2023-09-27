@@ -37,7 +37,7 @@ const AdminIncome = () => {
         </div>
         <div className="income-history"> {/* Updated class name */}
           <h1>Income History</h1>
-          <ul>
+          <ul className='list'>
             {currentUserIndex !== -1 && users[currentUserIndex].incomes && users[currentUserIndex].incomes.length > 0 ? (
               users[currentUserIndex].incomes.map((income, index) => (
                 <li key={index} className="income-item"> {/* Updated class name */}
