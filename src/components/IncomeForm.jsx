@@ -42,10 +42,10 @@ const IncomeForm = () => {
       <h2>Add an income</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor="incomeName">Income Name:</label>
           <input
             type="text"
             id="incomeName"
+            placeholder='Income Name'
             onChange={e => setIncomeName(e.target.value)}
             {...register('incomeName', { required: 'Income name is required' })}
           />
@@ -53,10 +53,10 @@ const IncomeForm = () => {
         </div>
 
         <div>
-          <label htmlFor="incomeAmount">Income Amount:</label>
           <input
             type="number"
             id="incomeAmount"
+            placeholder='Income Amount'
             onChange={e => {
               const value = Number(e.target.value);
               setIncomeAmount(value);
@@ -67,7 +67,6 @@ const IncomeForm = () => {
         </div>
 
         <div>
-          <label htmlFor="category">Category:</label>
           <select
             id="category"
             onChange={e => setCategory(e.target.value)}
@@ -83,10 +82,10 @@ const IncomeForm = () => {
         </div>
 
         <div>
-          <label htmlFor="dateIncome">Income Date:</label>
           <input
             type="datetime-local"
             id="dateIncome"
+            placeholder='Income Date'
             onChange={e => {
               const value = e.target.value;
               setDateIncome(value);

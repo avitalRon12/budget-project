@@ -1,26 +1,21 @@
-/* Define CSS variables based on the provided color scheme */
 :root {
   --page-background: #01013C;
-  /* Dark blue background */
   --page-text: #FFFFFF;
-  /* White text color */
   --form-background: #00013b;
-  /* Dark blue form background */
   --form-input-border: #03045d;
-  /* Darker blue form input border */
   --button-background: #315cfd;
-  /* Light blue button background */
   --button-text: #FFFFFF;
-  /* White button text */
   --segment-background: #001529;
-  /* Slightly darker blue for segments */
 }
 
-/* Apply the color scheme and enhanced styling to the AdminPurchase component */
 .admin-purchase {
   background-color: var(--page-background);
   color: var(--page-text);
   padding: 20px;
+}
+
+.purchase-heading {
+  text-align: center;
 }
 
 .purchase-form {
@@ -56,11 +51,8 @@
   background-color: var(--segment-background);
   margin-bottom: 10px;
   padding: 15px;
-  /* Increased padding for segments */
   border-radius: 10px;
-  /* Increased border radius for segments */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  /* Enhanced box shadow for segments */
 }
 
 .delete-button {

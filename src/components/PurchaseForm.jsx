@@ -51,7 +51,7 @@ const PurchaseForm = () => {
   return (
     <div className="purchase-form">
       <div className="form-container">
-        <h2>Add new purchase</h2>
+        <h2>Add a purchase</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
@@ -120,7 +120,7 @@ const PurchaseForm = () => {
             {errors.datePurchased && <p>{errors.datePurchased.message}</p>}
           </div>
 
-          <div>
+          <div className='total-price'>
             Total Price: {total} ₪
           </div>
 

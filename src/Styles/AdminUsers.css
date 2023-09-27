@@ -1,0 +1,71 @@
+:root {
+    --page-background: #01013C;
+    --page-text: #FFFFFF;
+    --form-background: #00013b;
+    --form-input-border: #03045d;
+    --button-background: #315cfd;
+    --button-text: #FFFFFF;
+    --segment-background: #001529;
+}
+
+.admin-users {
+    background-color: var(--page-background);
+    color: var(--page-text);
+    padding: 20px;
+}
+
+.users-heading {
+    text-align: center;
+}
+
+.users-form {
+    background-color: var(--form-background);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--form-input-border);
+    border-radius: 5px;
+}
+
+.add-button {
+    background-color: var(--button-background);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-button:hover {
+    background-image: radial-gradient(var(--page-background), var(--button-background));
+    transform: scale(1.05);
+}
+
+.users-item {
+    background-color: var(--segment-background);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #d60000;
+    transform: scale(1.05);
+}
