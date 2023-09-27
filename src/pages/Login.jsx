@@ -53,7 +53,7 @@ const Login = () => {
             <input
               id="password"
               className="lf--input"
-              type="text"
+              type="password"
               placeholder="Password"
               {...register("password", { required: true })}
             />
