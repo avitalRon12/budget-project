@@ -1,0 +1,175 @@
+  
+  .login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    height: 100vh;
+    
+    background: linear-gradient(
+      135deg,
+      rgba(#242e4d, .9),
+      rgba(#897e79, .9)
+    );
+    font-family: 'Roboto', helvetica, arial, sans-serif;
+    font-size: 1.5em;
+    
+   
+  }
+  
+  .login-form {
+    width: 100%;
+    padding: 2em;
+    position: relative;
+    background: rgba(black, .15);
+    
+  
+    
+    @media screen and (min-width: 600px) {
+      width: 50vw;
+      max-width: 15em;
+    }
+  }
+  
+    .flex-row {
+      display: flex;
+      margin-bottom: 1em;
+    }
+    
+    .lf--label {
+      width: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      background: #f5f6f8;
+      cursor: pointer;
+    }
+    .lf--input {
+      flex: 1;
+      padding: 1em;
+      border: 0;
+      color: #8f8f8f;
+      font-size: 1rem;
+  
+      &:focus {
+        outline: none;
+        transition: transform .15s ease;
+        transform: scale(1.1);
+      }
+    }
+  
+    .lf--submit {
+      display: block;
+      padding: 1em;
+      width: 100%;
+      
+      background: linear-gradient(
+        to right,
+        #35c3c1,
+        #00d6b7
+      );
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      font-size: .75em;
+      font-weight: 600;
+      text-shadow: 0 1px 0 rgba(black, .2);
+      
+      &:focus {
+        outline: none;
+        transition: transform .15s ease;
+        transform: scale(1.1);
+      }
+    }
+  
+  .lf--forgot {
+    margin-top: 1em;
+    color: #00d6b7;
+    font-size: .65em;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  ::placeholder { color: #8f8f8f; }
+  
+  .register-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* This vertically centers its children */
+      align-items: center; /* This horizontally centers its children */
+    }
+    .register-login-form {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .button2 {
+      display: block;
+      padding: 1em;
+      width: 100%;
+      margin-bottom: 10px;
+      background: linear-gradient(
+        to right,
+        #35c3c1,
+        #00d6b7
+      );
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      font-size: .75em;
+      font-weight: 600;
+      text-shadow: 0 1px 0 rgba(black, .2);
+      
+      &:focus {
+        outline: none;
+        transition: transform .15s ease;
+        transform: scale(1.1);
+      }
+    }
+  
+  /* Global Font Adjustment for Small Devices */
+  @media screen and (max-width: 480px) {
+      body {
+          font-size: 1.2em; /* Adjust as necessary */
+      }
+  
+      .login-form {
+          width: 100%; /* Full width for smaller screens */
+      }
+  
+      .lf--submit, .button2 {
+          padding: 1.2em; /* Larger tap area for small devices */
+      }
+  }
+  
+  /* Adjustments for Tablets */
+  @media screen and (min-width: 200px) and (max-width: 767px) {
+      body {
+          font-size: 0.6em; /* Adjust as necessary */
+      }
+  
+      .login-form {
+          width: 80%; /* Optimized width for tablet screens */
+      }
+  }
+  
+  /* Optimizations for Desktop */
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+      body {
+          font-size: 1.5em;
+      }
+  
+      .login-form {
+          width: 70%; /* Desktop optimized width */
+      }
+  }
+  
+  /* For Larger Desktop Screens */
+  @media screen and (min-width: 993px) {
+      .login-form {
+          width: 100%; /* For large desktop screens */
+      }
+  }
