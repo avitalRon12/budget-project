@@ -94,8 +94,6 @@ const AdminDashboard = () => {
       <h2>Dashboard</h2>
       <div className="pie-charts-container">
         <Chart
-          width={"500px"}
-          height={"300px"}
           chartType="PieChart"
           loader={<div>Loading Chart</div>}
           data={getPurchaseChartData()}
@@ -109,6 +107,8 @@ const AdminDashboard = () => {
               fontSize: 20,
               bold: false,
             },
+            height: 300,
+            width: 300,
             legend: {
               position: "bottom",
               textStyle: {
@@ -120,8 +120,6 @@ const AdminDashboard = () => {
           }}
         />
         <Chart
-          width={"500px"}
-          height={"300px"}
           chartType="PieChart"
           loader={<div>Loading Chart</div>}
           data={getIncomeChartData()}
@@ -135,6 +133,8 @@ const AdminDashboard = () => {
               fontSize: 20,
               bold: false,
             },
+            height: 300,
+            width: 300,
             legend: {
               position: "bottom",
               textStyle: {
@@ -147,12 +147,12 @@ const AdminDashboard = () => {
       </div>
       <div className="bar-charts-container ">
         <Chart
-          width={"500px"}
-          height={"300px"}
           chartType="ColumnChart"
           loader={<div>Loading Chart</div>}
           data={getBarChartData()}
           options={{
+            width: 300,
+            height: 200,
             title: "Income vs Expense",
             backgroundColor: '#f8f9fa',
             hAxis: {
@@ -162,6 +162,11 @@ const AdminDashboard = () => {
                 fontSize: 12,
               },
             },
+            legend: {
+              position: 'none',
+              width: 0,
+              height: 0,
+            },
             vAxis: {
               title: "Amount ₪",
               textStyle: {
@@ -169,11 +174,11 @@ const AdminDashboard = () => {
                 fontSize: 12,
               },
               gridlines: {
-                count: 5, // Adjusts the number of gridlines
-                color: "#f5f5f5",
+                count: 5, 
+                color: "#A4A4A4",
               },
             },
-            colors: ["red", "green"],
+            colors: ["#FF6F61", "#88D498"],
             titleTextStyle: {
               alignment: 'center',
               color: "#444",
