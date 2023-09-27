@@ -18,7 +18,6 @@ const Login = () => {
       }
     }
   }, [loggedInUser, navigate]);
-  }, [loggedInUser, navigate]);
   return (
     <>
       <div className="login-body">

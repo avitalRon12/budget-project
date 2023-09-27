@@ -10,6 +10,7 @@
   }
   
   .about-container {
+    height:100%;
     font-family: 'Roboto', helvetica, arial, sans-serif;
     background: linear-gradient(135deg, rgba(36, 46, 77, .9), rgba(137, 126, 121, .9));
     color: #f5f6f8;
@@ -85,8 +86,9 @@
         margin-top: -3em;
     }
     .about-link{
-        position: absolute;
-        margin-top: 2em;
+        position: relative;
+        margin-top: 4em;
+        display:block;
     }
 }
 
