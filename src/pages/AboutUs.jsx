@@ -93,9 +93,10 @@ const AboutUs = () => {
       </section>
       <section className="about-section">
         <h2>So are you ready to begin?</h2>
+        <h3>Subscribtion fee : 89.90 ₪/Month</h3>
         <h2>
           <Link to="/register" className="about-link">
-            Let's begin!
+            Let's begin! 
           </Link>
         </h2>
       </section>

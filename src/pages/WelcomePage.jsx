@@ -7,7 +7,7 @@ const WelcomePage = () => {
     return (
         <div className='welcome-container'>
             <div className='content-box'>
-                <h1 className='welcome-header'>Welcome!</h1>
+                <h1 className='welcome-header'>Welcome to WiseWallet Pro!</h1>
                 <div className='action-box'>
                     <div className='action-item'>
                         <h3>Already have an account?</h3>
