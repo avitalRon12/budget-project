@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
+import "../Styles/FormStyle.css"
 
 const WorkerIncomeForm = () => {
   const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
@@ -41,68 +42,69 @@ const WorkerIncomeForm = () => {
       <div>
         <h2>Add an income</h2>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="incomeName">income Name:</label>
-          <input
-            type="text"
-            id="incomeName"
-            onChange={e => setIncomeName(e.target.value)}
-            {...register('incomeName', { required: 'Income name is required' })}
-          />
-          {errors.incomeName && <p>{errors.incomeName.message}</p>}
-        </div>
+      <div className='form-container'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <input
+              type="text"
+              id="incomeName"
+              placeholder='Income Name'
+              onChange={e => setIncomeName(e.target.value)}
+              {...register('incomeName', { required: 'Income name is required' })}
+            />
+            {errors.incomeName && <p>{errors.incomeName.message}</p>}
+          </div>
 
-        <div>
-          <label htmlFor="incomeAmount">income Amount:</label>
-          <input
-            type="number"
-            id="incomeAmount"
-            onChange={e => {
-              const value = Number(e.target.value);
-              setIncomeAmount(value);
-              setValue('incomeAmount', value);
-            }}
-          />
-          {errors.incomeAmount && <p>{errors.incomeAmount.message}</p>}
-        </div>
+          <div>
+            <input
+              type="number"
+              id="incomeAmount"
+              placeholder='Income Amount'
+              onChange={e => {
+                const value = Number(e.target.value);
+                setIncomeAmount(value);
+                setValue('incomeAmount', value);
+              }}
+            />
+            {errors.incomeAmount && <p>{errors.incomeAmount.message}</p>}
+          </div>
 
-        <div>
-          <label htmlFor="category">Category:</label>
-          <select
-            id="category"
-            onChange={e => setCategory(e.target.value)}
-            {...register('category', { required: 'Please select a category' })}
-          >
-            <option value="">--Select a Category--</option>
-            <option value="check">Check</option>
-            <option value="refund">Refund</option>
-            <option value="donation">Donation</option>
-          </select>
-          {errors.category && <p>{errors.category.message}</p>}
-        </div>
+          <div>
+            <select
+              id="category"
+              onChange={e => setCategory(e.target.value)}
+              {...register('category', { required: 'Please select a category' })}
+            >
+              <option value="">--Select a Category--</option>
+              <option value="check">Check</option>
+              <option value="refund">Refund</option>
+              <option value="donation">Donation</option>
+            </select>
+            {errors.category && <p>{errors.category.message}</p>}
+          </div>
 
-        <div>
-          <label htmlFor="dateIncome">Purchase Amount:</label>
-          <input
-            type="datetime-local"
-            id="dateIncome"
-            onChange={e => {
-              const value = (e.target.value);
-              setDateIncome(value);
-              setValue('dateIncome', value);
-            }}
-          />
-          {errors.dateIncome && <p>{errors.dateIncome.message}</p>}
+          <div>
+            <input
+              type="datetime-local"
+              id="dateIncome"
+              onChange={e => {
+                const value = (e.target.value);
+                setDateIncome(value);
+                setValue('dateIncome', value);
+              }}
+            />
+            {errors.dateIncome && <p>{errors.dateIncome.message}</p>}
 
-        </div>
+          </div>
 
-        <div>
-          Total Income: {incomeAmount} ₪
-        </div>
+          <div className='total-price'>
+            Total Income: {incomeAmount} ₪
+          </div>
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
 
     </>
   );

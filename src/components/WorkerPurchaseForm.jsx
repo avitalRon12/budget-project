@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../context/userContext';
+import "../Styles/FormStyle.css"
 
 const WorkerPurchaseForm = () => {
     const { users, loggedInUser, setLoggedInUser, setUsers } = useContext(UserContext)
@@ -53,83 +54,83 @@ const WorkerPurchaseForm = () => {
             <div>
                 <h2>Add new purchase</h2>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <label htmlFor="purchaseName">Purchase Name:</label>
-                    <input
-                        type="text"
-                        id="purchaseName"
-                        onChange={e => setPurchaseName(e.target.value)}
-                        {...register('purchaseName', { required: 'Purchase name is required' })}
-                    />
-                    {errors.purchaseName && <p>{errors.purchaseName.message}</p>}
-                </div>
+            <div className='form-container'>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div>
+                        <input
+                            type="text"
+                            id="purchaseName"
+                            placeholder='Purchase Name'
+                            onChange={e => setPurchaseName(e.target.value)}
+                            {...register('purchaseName', { required: 'Purchase name is required' })}
+                        />
+                        {errors.purchaseName && <p>{errors.purchaseName.message}</p>}
+                    </div>
 
-                <div>
-                    <label htmlFor="unitPrice">Unit Price(in ₪):</label>
-                    <input
-                        type="number"
-                        id="unitPrice"
-                        onChange={e => {
-                            const value = Number(e.target.value);
-                            setUnitPrice(value);
-                            setValue('unitPrice', value);
-                        }}
-                    />
-                    {errors.unitPrice && <p>{errors.unitPrice.message}</p>}
-                </div>
+                    <div>
+                        <input
+                            type="number"
+                            id="unitPrice"
+                            placeholder='Unit Price(in ₪)'
+                            onChange={e => {
+                                const value = Number(e.target.value);
+                                setUnitPrice(value);
+                                setValue('unitPrice', value);
+                            }}
+                        />
+                        {errors.unitPrice && <p>{errors.unitPrice.message}</p>}
+                    </div>
 
-                <div>
-                    <label htmlFor="purchaseAmount">Purchase Amount:</label>
-                    <input
-                        type="number"
-                        id="purchaseAmount"
-                        onChange={e => {
-                            const value = Number(e.target.value);
-                            setPurchaseAmount(value);
-                            setValue('purchaseAmount', value);
-                        }}
-                    />
-                    {errors.purchaseAmount && <p>{errors.purchaseAmount.message}</p>}
-                </div>
+                    <div>
+                        <input
+                            type="number"
+                            id="purchaseAmount"
+                            placeholder='Purchase Amount'
+                            onChange={e => {
+                                const value = Number(e.target.value);
+                                setPurchaseAmount(value);
+                                setValue('purchaseAmount', value);
+                            }}
+                        />
+                        {errors.purchaseAmount && <p>{errors.purchaseAmount.message}</p>}
+                    </div>
 
-                <div>
-                    <label htmlFor="category">Category:</label>
-                    <select
-                        id="category"
-                        onChange={e => setCategory(e.target.value)}
-                        {...register('category', { required: 'Please select a category' })}
-                    >
-                        <option value="">--Select a Category--</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="groceries">Groceries</option>
-                        <option value="clothing">Clothing</option>
-                        <option value="furniture">Furniture</option>
-                    </select>
-                    {errors.category && <p>{errors.category.message}</p>}
-                </div>
+                    <div>
+                        <select
+                            id="category"
+                            onChange={e => setCategory(e.target.value)}
+                            {...register('category', { required: 'Please select a category' })}
+                        >
+                            <option value="">--Select a Category--</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="groceries">Groceries</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="furniture">Furniture</option>
+                        </select>
+                        {errors.category && <p>{errors.category.message}</p>}
+                    </div>
 
-                <div>
-                    <label htmlFor="datePurchased">Purchase Amount:</label>
-                    <input
-                        type="datetime-local"
-                        id="datePurchased"
-                        onChange={e => {
-                            const value = (e.target.value);
-                            setDatePurchased(value);
-                            setValue('datePurchased', value);
-                        }}
-                    />
-                    {errors.datePurchased && <p>{errors.datePurchased.message}</p>}
+                    <div>
+                        <input
+                            type="datetime-local"
+                            id="datePurchased"
+                            onChange={e => {
+                                const value = (e.target.value);
+                                setDatePurchased(value);
+                                setValue('datePurchased', value);
+                            }}
+                        />
+                        {errors.datePurchased && <p>{errors.datePurchased.message}</p>}
 
-                </div>
+                    </div>
 
-                <div>
-                    Total Price: {total} ₪
-                </div>
+                    <div className='total-price'>
+                        Total Price: {total} ₪
+                    </div>
 
-                <button type="submit">Submit</button>
-            </form>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </>
     );
 };
