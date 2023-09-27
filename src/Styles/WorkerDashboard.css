@@ -1,0 +1,14 @@
+.forms-cont {
+    display: flex;
+    flex: row;
+    gap: 10vw;
+    justify-content: center;
+}
+
+.w-purchase-form-cont {
+    width: 40%;
+}
+
+.w-income-form-cont {
+    width: 40%;
+}
