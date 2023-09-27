@@ -93,106 +93,107 @@ const AdminDashboard = () => {
     <div className="dashboard-container">
       <h2>Dashboard</h2>
       <div className="pie-charts-container">
-      <Chart
-        width={"500px"}
-        height={"300px"}
-        chartType="PieChart"
-        loader={<div>Loading Chart</div>}
-        data={getPurchaseChartData()}
-        options={{
-          title: "Purchase Distribution",
-          backgroundColor: '#f8f9fa',
-          pieHole: 0.4, // makes it a donut chart
-          colors: ["#FF6F61", "#6B5B95", "#88D498", "#5F67FF"], // custom colors
-          titleTextStyle: {
-            color: "#444",
-            fontSize: 20,
-            bold: false,
-          },
-          legend: {
-            position: "bottom",
-            textStyle: {
-              color: "gray",
-              fontSize: 11,
+        <Chart
+          width={"500px"}
+          height={"300px"}
+          chartType="PieChart"
+          loader={<div>Loading Chart</div>}
+          data={getPurchaseChartData()}
+          options={{
+            title: "Purchase Distribution",
+            backgroundColor: '#f8f9fa',
+            pieHole: 0.4, 
+            colors: ["#FF6F61", "#6B5B95", "#88D498", "#5F67FF"], 
+            titleTextStyle: {
+              color: "#444",
+              fontSize: 20,
+              bold: false,
             },
-          },
-        }}
-      />
-      <Chart
-        width={"500px"}
-        height={"300px"}
-        chartType="PieChart"
-        loader={<div>Loading Chart</div>}
-        data={getIncomeChartData()}
-        options={{
-          title: "Purchase Distribution",
-          backgroundColor: '#f8f9fa',
-          pieHole: 0.4, // makes it a donut chart
-          colors: ["#FF6F61", "#6B5B95", "#88D498", "#5F67FF"], // custom colors
-          titleTextStyle: {
-            color: "#444",
-            fontSize: 20,
-            bold: false,
-          },
-          legend: {
-            position: "bottom",
-            textStyle: {
-              color: "gray",
-              fontSize: 11,
+            legend: {
+              position: "bottom",
+              textStyle: {
+                color: "gray",
+                fontSize: 11,
+              },
             },
-          },
-        }}
-      />
-          </div>
-        <div className="bar-charts-container ">
-      <Chart
-        width={"500px"}
-        height={"300px"}
-        chartType="ColumnChart"
-        loader={<div>Loading Chart</div>}
-        data={getBarChartData()}
-        options={{
-          title: "Income vs Expense",
-          backgroundColor: '#f8f9fa',
-          hAxis: {
-            title: "Type",
-            textStyle: {
-              color: "#333",
-              fontSize: 12,
+            
+          }}
+        />
+        <Chart
+          width={"500px"}
+          height={"300px"}
+          chartType="PieChart"
+          loader={<div>Loading Chart</div>}
+          data={getIncomeChartData()}
+          options={{
+            title: "Purchase Distribution",
+            backgroundColor: '#f8f9fa',
+            pieHole: 0.4,
+            colors: ["#FF6F61", "#6B5B95", "#88D498", "#5F67FF"],
+            titleTextStyle: {
+              color: "#444",
+              fontSize: 20,
+              bold: false,
             },
-          },
-          vAxis: {
-            title: "Amount ₪",
-            textStyle: {
-              color: "#333",
-              fontSize: 12,
+            legend: {
+              position: "bottom",
+              textStyle: {
+                color: "gray",
+                fontSize: 11,
+              },
             },
-            gridlines: {
-              count: 5, // Adjusts the number of gridlines
-              color: "#f5f5f5",
+          }}
+        />
+      </div>
+      <div className="bar-charts-container ">
+        <Chart
+          width={"500px"}
+          height={"300px"}
+          chartType="ColumnChart"
+          loader={<div>Loading Chart</div>}
+          data={getBarChartData()}
+          options={{
+            title: "Income vs Expense",
+            backgroundColor: '#f8f9fa',
+            hAxis: {
+              title: "Type",
+              textStyle: {
+                color: "#333",
+                fontSize: 12,
+              },
             },
-          },
-          colors: ["red", "green"],
-          titleTextStyle: {
-            alignment: 'center',
-            color: "#444",
-            fontSize: 20,
-            bold: false,
-          },
-          annotations: {
-            alwaysOutside: false,
-            highContrast: true,
-            textStyle: {
-              fontSize: 0, // Set font size to 0 to effectively hide the annotations
-              auraColor: "none",
+            vAxis: {
+              title: "Amount ₪",
+              textStyle: {
+                color: "#333",
+                fontSize: 12,
+              },
+              gridlines: {
+                count: 5, // Adjusts the number of gridlines
+                color: "#f5f5f5",
+              },
             },
-            boxStyle: {
-              stroke: "#ccc",
-              strokeWidth: 0,
+            colors: ["red", "green"],
+            titleTextStyle: {
+              alignment: 'center',
+              color: "#444",
+              fontSize: 20,
+              bold: false,
             },
-          },
-        }}
-      />
+            annotations: {
+              alwaysOutside: false,
+              highContrast: true,
+              textStyle: {
+                fontSize: 0, // Set font size to 0 to effectively hide the annotations
+                auraColor: "none",
+              },
+              boxStyle: {
+                stroke: "#ccc",
+                strokeWidth: 0,
+              },
+            },
+          }}
+        />
       </div>
     </div>
   );
