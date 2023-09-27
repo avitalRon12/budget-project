@@ -1,124 +1,127 @@
-/* Define CSS variables for the color scheme */
 :root {
-    --footer-background: #1B2A41; /* Dark blue background */
-    --footer-text: #FFFFFF; /* White text */
-    --footer-link: #E8A628; /* Orange link color */
+  --footer-background: #1B2A41;
+  --footer-text: #FFFFFF;
+  --footer-link: #E8A628;
+}
+
+.footer-cont {
+  background-color: var(--footer-background);
+  color: var(--footer-text);
+  padding: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-cont h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Style the phone numbers and working hours */
+.footer-cont span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style the social media links */
+.social-media-cont {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.social-media-cont div {
+  margin: 0 10px;
+}
+
+.social-media-cont a {
+  color: var(--footer-link);
+  text-decoration: none;
+}
+
+.social-media-cont a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  background-color: rgb(238, 238, 238);
+  background: linear-gradient(-45deg, #00143c 0%, #40c9ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 25px;
+  gap: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+}
+
+/* for all social containers*/
+.socialContainer {
+  width: 52px;
+  height: 52px;
+  background-color: rgb(44, 44, 44);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: .3s;
+}
+
+/* instagram*/
+.containerOne:hover {
+  background-color: #d62976;
+  transition-duration: .3s;
+}
+
+/* twitter*/
+.containerTwo:hover {
+  background-color: #00acee;
+  transition-duration: .3s;
+}
+
+/* linkdin*/
+.containerThree:hover {
+  background-color: #0072b1;
+  transition-duration: .3s;
+}
+
+/* Whatsapp*/
+.containerFour:hover {
+  background-color: #128C7E;
+  transition-duration: .3s;
+}
+
+.socialContainer:active {
+  transform: scale(0.9);
+  transition-duration: .3s;
+}
+
+.socialSvg {
+  width: 17px;
+}
+
+.socialSvg path {
+  fill: rgb(255, 255, 255);
+}
+
+.socialContainer:hover .socialSvg {
+  animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
   }
-  
-  /* Apply the color scheme to the Footer component */
-  .footer-cont {
-    background-color: var(--footer-background);
-    color: var(--footer-text);
-    padding: 20px;
-    font-size: 1.2rem;
-    text-align: center;
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  .footer-cont h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  /* Style the phone numbers and working hours */
-  .footer-cont span {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  /* Style the social media links */
-  .social-media-cont {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .social-media-cont div {
-    margin: 0 10px;
-  }
-  
-  .social-media-cont a {
-    color: var(--footer-link);
-    text-decoration: none;
-  }
-  
-  .social-media-cont a:hover {
-    text-decoration: underline;
-  }
-  
-  .card {
-    width: fit-content;
-    height: fit-content;
-    position: relative;
-    margin-left: 34%;
-    background-color: rgb(238, 238, 238);
-    background: linear-gradient(-45deg, #00143c 0%, #40c9ff 100% );
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px 25px;
-    gap: 20px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
-  }
-  
-  /* for all social containers*/
-  .socialContainer {
-    width: 52px;
-    height: 52px;
-    background-color: rgb(44, 44, 44);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition-duration: .3s;
-  }
-  /* instagram*/
-  .containerOne:hover {
-    background-color: #d62976;
-    transition-duration: .3s;
-  }
-  /* twitter*/
-  .containerTwo:hover {
-    background-color: #00acee;
-    transition-duration: .3s;
-  }
-  /* linkdin*/
-  .containerThree:hover {
-    background-color: #0072b1;
-    transition-duration: .3s;
-  }
-  /* Whatsapp*/
-  .containerFour:hover {
-    background-color: #128C7E;
-    transition-duration: .3s;
-  }
-  
-  .socialContainer:active {
-    transform: scale(0.9);
-    transition-duration: .3s;
-  }
-  
-  .socialSvg {
-    width: 17px;
-  }
-  
-  .socialSvg path {
-    fill: rgb(255, 255, 255);
-  }
-  
-  .socialContainer:hover .socialSvg {
-    animation: slide-in-top 0.3s both;
-  }
-  
-  @keyframes slide-in-top {
-    0% {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-  
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  
+}

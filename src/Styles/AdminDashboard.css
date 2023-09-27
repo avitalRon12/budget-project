@@ -1,30 +1,48 @@
 .dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    gap: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.pie-charts-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.pie-charts-container rect {
+  width: 0;
+}
+
+
+
+
+.bar-charts-container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+@media screen and (max-width: 718px) {
   .pie-charts-container {
-    display: flex;
-    justify-content: center;  /* Distributes child elements evenly */
-    width: 100%; /* Full width of the parent container */
-    gap: 20px;  /* Space between the pie charts */
-    padding: 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
   }
-  .bar-charts-container {
-    display: flex;
-    justify-content: center;  /* Distributes child elements evenly */
-    width: 100%; /* Full width of the parent container */
-    gap: 20px;  /* Space between the pie charts */
-    padding: 20px;
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
