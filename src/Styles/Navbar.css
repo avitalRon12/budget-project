@@ -16,7 +16,7 @@
   height: 10vh;
   justify-content: space-around;
   align-items: center;
-  z-index: 1;
+  z-index: 999;
   background-image: linear-gradient(var(--navbar-background), #001529);
   color: var(--navbar-text);
 }
@@ -180,5 +180,6 @@
     .navbar-cont {
       flex-direction: column;
       height: 25vh;
+      font-size: 1.5em;
     }
   }
