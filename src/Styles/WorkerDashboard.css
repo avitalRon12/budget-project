@@ -1,6 +1,6 @@
 .forms-cont {
     display: flex;
-    flex: row;
+    flex-direction: row;
     gap: 10vw;
     justify-content: center;
 }
@@ -12,3 +12,17 @@
 .w-income-form-cont {
     width: 40%;
 }
+
+@media screen and (max-width: 718px) {
+    .forms-cont {
+        flex-direction: column;
+        align-items: center;
+    }
+    .w-purchase-form-cont {
+        width: 80%;
+    }
+    
+    .w-income-form-cont {
+        width: 80%;
+    }
+  }

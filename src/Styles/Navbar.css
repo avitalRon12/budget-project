@@ -2,8 +2,8 @@
 
 :root {
   --navbar-background: #01013C; /* Dark blue background */
-  --navbar-text: #FFFFFF; /* White text */
-  --navbar-link: #40439E; /* Light blue link color */
+  --navbar-text: hsl(0, 0%, 100%); /* White text */
+  --navbar-link: #bddeff; /* Light blue link color */
 }
 
 /* Apply the color scheme to the AdminNavbar component */
@@ -170,4 +170,9 @@
     scale: 0.7;
   }
   
-  
+  @media screen and (max-width: 718px) {
+    .navbar-cont {
+      flex-direction: column;
+      height: 20vh;
+    }
+  }
