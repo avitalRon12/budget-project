@@ -42,9 +42,12 @@ const AdminIncome = () => {
               users[currentUserIndex].incomes.map((income, index) => (
                 <li key={index} className="income-item"> {/* Updated class name */}
                   <p>
-                    {income?.incomeName} - {income?.incomeAmount} ₪
+                    Income name: {income?.incomeName}
                   </p>
-                  <button className="delete-button" onClick={() => deleteBtn(index)}>delete</button> {/* Updated class name */}
+                  <p>
+                    Total amount: {income?.incomeAmount} ₪
+                  </p>
+                  <button className="delete-button" onClick={() => deleteBtn(index)}>Delete</button> {/* Updated class name */}
                 </li>
               ))
             ) : (
