@@ -206,31 +206,5 @@ const AboutUs = () => {
     </div>
   );
 };
-      <section className="about-section">
-        <h2>Join the WiseWallet Pro Community</h2>
-        <p>
-          Join thousands of businesses that have already experienced the benefits
-          of WiseWallet Pro. Take control of your finances, make informed decisions,
-          and drive your company's growth with confidence. Whether you're a small
-          startup looking to manage your budget effectively or a large corporation
-          seeking advanced financial tools, WiseWallet Pro is the solution you've
-          been searching for. Thank you for choosing WiseWallet Pro as your budget
-          management partner. We look forward to helping you achieve financial
-          success and prosperity for your business. Start your journey to financial
-          empowerment with WiseWallet Pro today!
-        </p>
-      </section>
-
-      <section className="about-section">
-        <h2>So are you ready to begin?</h2>
-        <h2>
-          <Link to="/register" className="about-link">
-            Let's begin!
-          </Link>
-        </h2>
-      </section>
-    </div>
-  );
-};
 
 export default AboutUs;
