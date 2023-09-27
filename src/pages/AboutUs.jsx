@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './../Styles/AboutUs.css'; 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './../Styles/AboutUs.css'; 
 
 const AboutUs = () => {
   return (

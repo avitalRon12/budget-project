@@ -4,7 +4,6 @@ import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import "./../Styles/Login.css";
-import "./../Styles/Login.css";
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const { login, loggedInUser } = useContext(UserContext);
@@ -18,6 +17,7 @@ const Login = () => {
         navigate("/worker/workerDash");
       }
     }
+  }, [loggedInUser, navigate]);
   }, [loggedInUser, navigate]);
   return (
     <>
