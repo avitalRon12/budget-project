@@ -4,6 +4,8 @@
   --navbar-background: #01013C; /* Dark blue background */
   --navbar-text: hsl(0, 0%, 100%); /* White text */
   --navbar-link: #bddeff; /* Light blue link color */
+  --navbar-text: hsl(0, 0%, 100%); /* White text */
+  --navbar-link: #bddeff; /* Light blue link color */
 }
 
 /* Apply the color scheme to the AdminNavbar component */
